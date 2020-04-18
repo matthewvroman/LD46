@@ -27,9 +27,11 @@ public class DialoguePanel : MonoBehaviour
 
     private void Awake()
     {
+        m_dialogueBox.OnTextAnimationComplete += OnTextAnimationComplete;
         for(int i=0; i<m_responseBoxes.Length; i++)
         {
             m_responseBoxes[i].OnClickedResponse += OnClickedResponse;
+            m_responseBoxes[i].OnClickedResponseAnimationComplete += OnClickedResponseAnimationComplete;
         }
     }
 
@@ -42,6 +44,12 @@ public class DialoguePanel : MonoBehaviour
             m_state = State.Entering;
             m_characterImage.transform.localPosition = m_localExitPosition;
             m_canvasGroup.alpha = 0.0f;
+
+            for(int i=0; i<m_responseBoxes.Length; i++)
+            {
+                DialogueBox responseBox = m_responseBoxes[i];
+                responseBox.gameObject.SetActive(false);
+            }
         }
 
         m_character = character;
@@ -51,18 +59,17 @@ public class DialoguePanel : MonoBehaviour
         m_dialogue = dialogue;
 
         m_dialogueBox.DisplayText(m_dialogue.Text);
+    }
 
+    private void OnTextAnimationComplete()
+    {
         for(int i=0; i<m_responseBoxes.Length; i++)
         {
             DialogueBox responseBox = m_responseBoxes[i];
             if(i<m_dialogue.Responses.Length)
             {
-                responseBox.gameObject.SetActive(true);
                 responseBox.DisplayResponse(m_dialogue.Responses[i]);
-            }
-            else
-            {
-                responseBox.gameObject.SetActive(false);
+                responseBox.Enter(i*0.125f);
             }
         }
     }
@@ -73,7 +80,30 @@ public class DialoguePanel : MonoBehaviour
         {
             return;
         }
-        
+
+        for(int i=0; i<m_responseBoxes.Length; i++)
+        {
+            DialogueBox responseBox = m_responseBoxes[i];
+            responseBox.SetInteractable(false);
+            if(responseBox.Response != response)
+            {
+                responseBox.Exit(0.0f);
+            }
+        }
+         
+    }
+
+    private void OnClickedResponseAnimationComplete(DialogueResponse response)
+    {
+        for(int i=0; i<m_responseBoxes.Length; i++)
+        {
+            DialogueBox responseBox = m_responseBoxes[i];
+            if(responseBox.Response == response)
+            {
+                responseBox.Exit(0.125f);
+            }
+        }
+
         if(response.Dialogue)
         {
             Display(m_character, response.Dialogue);
@@ -81,7 +111,7 @@ public class DialoguePanel : MonoBehaviour
         else
         {
             Exit();
-        }   
+        }  
     }
 
     public void Exit()

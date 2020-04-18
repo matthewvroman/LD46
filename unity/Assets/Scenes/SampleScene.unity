@@ -560,6 +560,7 @@ GameObject:
   - component: {fileID: 602571087}
   - component: {fileID: 602571089}
   - component: {fileID: 602571090}
+  - component: {fileID: 602571091}
   m_Layer: 5
   m_Name: Dialogue Response
   m_TagString: Untagged
@@ -637,6 +638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_text: {fileID: 504175532}
   m_button: {fileID: 602571090}
+  m_canvasGroup: {fileID: 602571091}
 --- !u!114 &602571090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,7 +663,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -680,6 +682,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &602571091
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602571085}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &627311475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,6 +1031,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_text: {fileID: 2134167262}
   m_button: {fileID: 0}
+  m_canvasGroup: {fileID: 0}
 --- !u!1 &842462257
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,6 +1147,7 @@ GameObject:
   - component: {fileID: 1023675179}
   - component: {fileID: 1023675181}
   - component: {fileID: 1023675182}
+  - component: {fileID: 1023675183}
   m_Layer: 5
   m_Name: Dialogue Response
   m_TagString: Untagged
@@ -1209,6 +1225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_text: {fileID: 2105719110}
   m_button: {fileID: 1023675182}
+  m_canvasGroup: {fileID: 1023675183}
 --- !u!114 &1023675182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1233,7 +1250,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1252,6 +1269,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &1023675183
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023675177}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1076341833
 GameObject:
   m_ObjectHideFlags: 0
