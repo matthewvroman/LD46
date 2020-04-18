@@ -26,11 +26,15 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        if(collider.gameObject.GetComponent<PlayerController>() == null) return;
+
         m_inTrigger = true;
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
+        if(collider.gameObject.GetComponent<PlayerController>() == null) return;
+        
         m_inTrigger = false;
     }
 

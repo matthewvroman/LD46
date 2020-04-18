@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93e04091e13cee4e94b080702466c7e, type: 3}
+  m_Name: LightningStrike
+  m_EditorClassIdentifier: 
+  m_name: Lightning Strike
+  m_maxTargets: 3
+  m_maxRange: 99999
+  m_frontFacingOnly: 1
+  m_spellCircle: {fileID: 5501674396772322908, guid: 8e50bd853efd71d49ba5e08c0a793be7,
+    type: 3}
+  m_spellCircleScale: 0.75
+  m_damage: 1
+  m_damagePrefab: {fileID: 8935770827921650595, guid: 2864c60fd2a5732439352f314c47d06d,
+    type: 3}
+  m_damagePrefabParentedToEnemy: 1
+  m_impulse: {x: 2, y: 0}
+  m_screenShakeMagnitude: {x: 0.25, y: 0.25}
+  m_screenShakeDuration: 0.1
