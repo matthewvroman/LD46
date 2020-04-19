@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Mushroom : Enemy
 {
-    [SerializeField] private float m_speed;
     [SerializeField] private float m_attackRange;
     [SerializeField] private float m_timeBetweenAttacks = 1.0f;
     private float m_timeUntilNextAttack;
@@ -83,7 +82,7 @@ public class Mushroom : Enemy
             PlayerController enemy = results[i].transform.gameObject.GetComponentInChildren<PlayerController>();
             if(enemy != null)
             {
-                enemy.Damage(1, Vector2.right * m_desiredDirection * 2.5f);
+                enemy.Damage(m_baseDamage, Vector2.right * m_desiredDirection * 2.5f);
             }
             
         }

@@ -377,6 +377,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c74c73f0861ae42bbdf4bedebdbd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_speed: 0
   m_rigidbody: {fileID: 272593893}
   m_spriteRenderer: {fileID: 272593897}
   m_animator: {fileID: 0}
@@ -1463,6 +1464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c74c73f0861ae42bbdf4bedebdbd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_speed: 0
   m_rigidbody: {fileID: 1529087303}
   m_spriteRenderer: {fileID: 1529087307}
   m_animator: {fileID: 0}
@@ -1672,9 +1674,97 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 936163377, guid: 14c87b74755bcd64a86e22a16a998aaf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 936163377, guid: 14c87b74755bcd64a86e22a16a998aaf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 111781055557585011, guid: 14c87b74755bcd64a86e22a16a998aaf,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874008863600777456, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 874008863600777456, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170771224783199587, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170771224783199587, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170771224783199587, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170771224783199587, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170771224783199587, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1170771224783199587, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404337737509975100, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404337737509975100, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404337737509975100, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404337737509975100, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404337737509975100, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404337737509975100, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101831667261451854, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101831667261451854, guid: 14c87b74755bcd64a86e22a16a998aaf,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3975295073756513719, guid: 14c87b74755bcd64a86e22a16a998aaf,
@@ -1944,17 +2034,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_dialoguePanel: {fileID: 785350714}
   m_introDialogues:
-  - {fileID: 11400000, guid: 8337bd9d41b8a9a4a98bc74646f4a508, type: 2}
-  m_introDialogueCharacter: {fileID: 11400000, guid: 628c71ab21f4bbb4ab55c455856b17f1,
-    type: 2}
+  - {fileID: 11400000, guid: ae1d1e3d71d63bb4a8813b93459c8fb4, type: 2}
+  - {fileID: 11400000, guid: 60284957b1d269d43be2be0c39172bc4, type: 2}
+  - {fileID: 11400000, guid: 99e19d26168d3514d91c3fa565cd9b74, type: 2}
+  - {fileID: 11400000, guid: e50af6bd98ca4774986146bc756da6bd, type: 2}
+  - {fileID: 11400000, guid: 759ae6ab6de93f040b35a9c95faf6137, type: 2}
+  m_introDialogueCharacter:
+  - {fileID: 11400000, guid: 628c71ab21f4bbb4ab55c455856b17f1, type: 2}
+  - {fileID: 11400000, guid: 628c71ab21f4bbb4ab55c455856b17f1, type: 2}
+  - {fileID: 11400000, guid: 628c71ab21f4bbb4ab55c455856b17f1, type: 2}
+  - {fileID: 11400000, guid: 628c71ab21f4bbb4ab55c455856b17f1, type: 2}
+  - {fileID: 11400000, guid: b1f205a602ae96b4f99ea8a87df7abf5, type: 2}
   m_exitDialogues:
   - {fileID: 11400000, guid: 4bb3d62c4331d2148a4a40ba450e3113, type: 2}
+  - {fileID: 11400000, guid: 51cf7e0434be779408daee9255c2cef0, type: 2}
+  - {fileID: 11400000, guid: 8d9681d9ebfa8e64687d53ea3ca6e4bf, type: 2}
+  - {fileID: 11400000, guid: 8ad88eca02aa0414a893117e97464658, type: 2}
+  - {fileID: 11400000, guid: 7333aa22cccaa69488d9358472c64ba4, type: 2}
   m_player: {fileID: 1219701604}
   m_enemyPrefabs:
   - {fileID: 6304307115906178747, guid: e175b172609fe2c45babb49f2c10b225, type: 3}
   m_expelPortal: {fileID: 1025198552}
   m_levelEndPortal: {fileID: 416012886}
   m_hud: {fileID: 1594223285}
+  m_difficulties:
+  - canSpawnBothSidesAtOnce: 0
+    minEnemiesPerWave: 5
+    maxEnemiesPerWave: 5
+    damageModifier: 0
+    speedModifier: 0
+    expModifier: 0
+    healthModifier: 0
+  - canSpawnBothSidesAtOnce: 0
+    minEnemiesPerWave: 5
+    maxEnemiesPerWave: 8
+    damageModifier: 0
+    speedModifier: 0.5
+    expModifier: 1
+    healthModifier: 2
+  - canSpawnBothSidesAtOnce: 1
+    minEnemiesPerWave: 5
+    maxEnemiesPerWave: 10
+    damageModifier: 0
+    speedModifier: 1
+    expModifier: 2
+    healthModifier: 4
+  - canSpawnBothSidesAtOnce: 1
+    minEnemiesPerWave: 7
+    maxEnemiesPerWave: 12
+    damageModifier: 0
+    speedModifier: 1.5
+    expModifier: 3
+    healthModifier: 6
+  - canSpawnBothSidesAtOnce: 1
+    minEnemiesPerWave: 8
+    maxEnemiesPerWave: 12
+    damageModifier: 1
+    speedModifier: 2
+    expModifier: 5
+    healthModifier: 5
 --- !u!4 &1672087526
 Transform:
   m_ObjectHideFlags: 0
@@ -2121,6 +2259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83c74c73f0861ae42bbdf4bedebdbd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_speed: 0
   m_rigidbody: {fileID: 1854476080}
   m_spriteRenderer: {fileID: 1854476084}
   m_animator: {fileID: 0}

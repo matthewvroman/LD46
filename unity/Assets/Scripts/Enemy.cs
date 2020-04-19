@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour, IHealth
         Dead,
         Retreating
     }
+    [SerializeField] protected float m_speed;
+
     [SerializeField] protected Rigidbody2D m_rigidbody;
     public Rigidbody2D Rigidbody { get => m_rigidbody; }
 
@@ -46,6 +48,8 @@ public class Enemy : MonoBehaviour, IHealth
     protected int m_desiredDirection;
 
     private float m_destroyAfterDeath = 5.0f;
+
+    protected float m_baseDamage;
 
     [SerializeField] protected ContactFilter2D m_attackContactFilter;
     [SerializeField] private int m_experience;
@@ -133,5 +137,15 @@ public class Enemy : MonoBehaviour, IHealth
         m_rigidbody.AddForce(impulse, ForceMode2D.Impulse);
         m_spriteRenderer.sortingLayerName = "Foreground";
         if(Killed != null) Killed(this);
+    }
+
+    public void Augment(float healthModifier, int expModifier, float speedModifier, float damageModifier)
+    {
+        m_maxHealth += healthModifier;
+        m_currentHealth = m_maxHealth; 
+        m_healthBar.Reset();
+        m_healthBar.SetInterface(this);
+        m_experience += expModifier;
+        m_baseDamage += damageModifier;
     }
 }

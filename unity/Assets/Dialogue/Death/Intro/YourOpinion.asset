@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_text: Yeah sure. So listen, I'm gonna need to take that thing with me.
   m_responses:
-  - m_text: You can't take Glorpo!
+  - m_text: You can't take Glorpol!
     m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
   - m_text: Over my dead body!
     m_dialogue: {fileID: 11400000, guid: f47c154bae11349449d02221f76da953, type: 2}
+  m_summonsPortal: 0
+  m_spawnsEnemies: 0
+  m_completesSequence: 0

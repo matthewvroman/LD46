@@ -92,6 +92,14 @@ public class PlayerController : MonoBehaviour, IHealth
         scale.x = Mathf.Lerp(scale.x, m_desiredDirection, Time.deltaTime * 15.0f);
         m_animator.gameObject.transform.localScale = scale;
 
+        if(DialoguePanel.InDialogue)
+        {
+            m_animator.SetBool("Running", false);
+            m_animator.SetBool("Attacking", false);
+            m_animator.SetBool("Casting", false);
+            return;
+        }
+
         if(m_gameplayVersion)
         {
             if(Input.GetKeyDown(KeyCode.Space) && m_state == State.Move)
@@ -197,6 +205,12 @@ public class PlayerController : MonoBehaviour, IHealth
 
     void FixedUpdate()
     {
+        if(DialoguePanel.InDialogue)
+        {
+            m_rigidbody.velocity = Vector2.zero;
+            return;
+        }
+
         switch(m_state)
         {
             case State.Move:

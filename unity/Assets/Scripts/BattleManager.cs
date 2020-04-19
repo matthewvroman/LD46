@@ -22,7 +22,7 @@ public class BattleManager : MonoBehaviour
 
     //each index is for a different level
     [SerializeField] private List<Dialogue>m_introDialogues;
-    [SerializeField] private DialogueCharacter m_introDialogueCharacter;
+    [SerializeField] private DialogueCharacter[] m_introDialogueCharacter;
 
     [SerializeField] private List<Dialogue>m_exitDialogues;
 
@@ -34,9 +34,24 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField] private GameObject m_hud;
 
+    [Serializable]
+    private struct DifficultyAdjustment
+    {
+        public bool canSpawnBothSidesAtOnce;
+        public int minEnemiesPerWave;
+        public int maxEnemiesPerWave;
+        public float damageModifier;
+        public float speedModifier;
+        public int expModifier;
+        public float healthModifier;
+    }
+
+    [SerializeField] private DifficultyAdjustment[] m_difficulties;
+
     public Action OnSpawnEnemies;
     
     private bool m_levelled = false;
+    private int m_initialLevel;
 
     private void Awake()
     {
@@ -47,6 +62,8 @@ public class BattleManager : MonoBehaviour
 
         Enemy.Killed += OnEnemyKilled;
         LevelManager.Instance.OnLevelUp += OnLevelUp;
+
+        m_initialLevel = LevelManager.Instance.Level;
         
         StartCoroutine(LevelIntro());
         //m_dialoguePanel.Display(m_introDialogueCharacter, m_introDialogues[LevelManager.Instance.Level-1]);
@@ -85,7 +102,7 @@ public class BattleManager : MonoBehaviour
         m_expelPortal.Despawn();
         m_hud.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        m_dialoguePanel.Display(m_introDialogueCharacter, m_introDialogues[LevelManager.Instance.Level-1]);
+        m_dialoguePanel.Display(m_introDialogueCharacter[LevelManager.Instance.Level-1], m_introDialogues[LevelManager.Instance.Level-1]);
     }
 
     public void SpawnPortal()
@@ -104,10 +121,12 @@ public class BattleManager : MonoBehaviour
     private List<Enemy>m_aliveEnemies = new List<Enemy>();
 
     private int m_waveIndex = 0;
-
+    
     public void SpawnEnemies()
     {
-        for(int i=0; i<5; i++)
+        DifficultyAdjustment difficulty = m_difficulties[m_initialLevel-1];
+        int numEnemies = UnityEngine.Random.Range(difficulty.minEnemiesPerWave, difficulty.maxEnemiesPerWave);
+        for(int i=0; i<numEnemies; i++)
         {
             Vector3 position = m_player.transform.position;
             if(m_waveIndex%2==0)
@@ -118,9 +137,18 @@ public class BattleManager : MonoBehaviour
             {
                 position.x = UnityEngine.Random.Range(-6.0f,-9.0f);
             }
+
+            if(difficulty.canSpawnBothSidesAtOnce && UnityEngine.Random.Range(0.0f, 1.0f)>0.5f)
+            {
+                if(i>=numEnemies/2)
+                {
+                    position.x = -position.x;
+                }
+            }
             
             position.y = UnityEngine.Random.Range(-2.0f, -0.5f);
             Enemy enemy = GameObject.Instantiate(m_enemyPrefabs[0]);
+            enemy.Augment(difficulty.healthModifier, difficulty.expModifier, difficulty.speedModifier, difficulty.damageModifier);
             enemy.transform.position = position;
             m_aliveEnemies.Add(enemy);
         }
@@ -131,13 +159,23 @@ public class BattleManager : MonoBehaviour
     private void OnEnemyKilled(Enemy enemy)
     {
         m_aliveEnemies.Remove(enemy);
-        if(m_levelled)
+        if(m_aliveEnemies.Count==0)
         {
-            m_dialoguePanel.Display(m_introDialogueCharacter, m_exitDialogues[LevelManager.Instance.Level-2]);
-        }
-        else if(m_aliveEnemies.Count==0)
-        {
-            SpawnEnemies();
+            if(m_levelled)
+            {
+                if(LevelManager.Instance.TrueLevel > LevelManager.Instance.Level)
+                {
+                    m_dialoguePanel.Display(m_introDialogueCharacter[LevelManager.Instance.Level-1], m_exitDialogues[LevelManager.Instance.Level-1]);
+                }
+                else
+                {
+                    m_dialoguePanel.Display(m_introDialogueCharacter[LevelManager.Instance.Level-2], m_exitDialogues[LevelManager.Instance.Level-2]);
+                }
+            }
+            else
+            {
+                SpawnEnemies();
+            }
         }
     }
 

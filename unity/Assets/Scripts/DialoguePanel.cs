@@ -25,6 +25,11 @@ public class DialoguePanel : MonoBehaviour
 
     private State m_state = State.Exiting;
 
+    PlayerController m_playerController;
+
+    private static bool m_inDialogue;
+    public static bool InDialogue { get => m_inDialogue; }
+
     private void Awake()
     {
         m_dialogueBox.OnTextAnimationComplete += OnTextAnimationComplete;
@@ -33,6 +38,16 @@ public class DialoguePanel : MonoBehaviour
             m_responseBoxes[i].OnClickedResponse += OnClickedResponse;
             m_responseBoxes[i].OnClickedResponseAnimationComplete += OnClickedResponseAnimationComplete;
         }
+    }
+
+    private void OnEnable()
+    {
+        m_inDialogue = true;
+    }
+
+    private void OnDisable()
+    {
+        m_inDialogue = false;
     }
 
     public void Display(DialogueCharacter character, Dialogue dialogue)
@@ -119,10 +134,7 @@ public class DialoguePanel : MonoBehaviour
         {
             BattleManager.Instance.SpawnEnemies();
         }
-        if(m_dialogue.CompletesSequence)
-        {
-            m_character.CompletedSequence = true;
-        }
+        m_character.CompletedSequence = m_dialogue.CompletesSequence;
 
         if(response.Dialogue)
         {

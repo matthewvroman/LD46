@@ -20,16 +20,17 @@ public class LevelManager : MonoBehaviour
         }
     }
     private int m_level = 1;
+    private int m_trueLevel = 1;
+    public int TrueLevel { get => m_trueLevel; }
     public int Level { get => m_level; }
 
     public int[] m_experience = new int[]
     {
         100,
-        250,
-        500,
-        750,
+        275,
+        650,
         1000,
-        9999
+        1000
     };
 
     private float[] m_totalHealth = new float[]
@@ -68,6 +69,8 @@ public class LevelManager : MonoBehaviour
             //LEVEL UP!!!!
             m_currentExperience -= TotalExperience;
             m_level++;
+            m_trueLevel++;
+            m_level = Mathf.Min(m_level, m_experience.Length);
             if(OnLevelUp != null) OnLevelUp(Level);
         }
     }

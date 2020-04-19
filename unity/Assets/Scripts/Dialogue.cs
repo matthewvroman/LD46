@@ -20,4 +20,7 @@ public class Dialogue : ScriptableObject
     [SerializeField] private bool m_completesSequence;
     public bool CompletesSequence { get => m_completesSequence; }
 
+    [SerializeField] private bool m_completesGame;
+    public bool CompletesGame { get => m_completesGame; }
+
 }

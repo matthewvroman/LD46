@@ -27,5 +27,5 @@ MonoBehaviour:
   m_screenShakeMagnitude: {x: 0.05, y: 0.05}
   m_screenShakeDuration: 0.25
   m_cooldown: 10
-  m_minLevel: 1
+  m_minLevel: 3
   m_damageDelay: 0

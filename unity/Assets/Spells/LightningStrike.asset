@@ -19,7 +19,7 @@ MonoBehaviour:
   m_spellCircle: {fileID: 5501674396772322908, guid: 8e50bd853efd71d49ba5e08c0a793be7,
     type: 3}
   m_spellCircleScale: 0.75
-  m_damage: 4
+  m_damage: 6
   m_damagePrefab: {fileID: 8935770827921650595, guid: 2864c60fd2a5732439352f314c47d06d,
     type: 3}
   m_damagePrefabParentedToEnemy: 1
@@ -27,5 +27,5 @@ MonoBehaviour:
   m_screenShakeMagnitude: {x: 0.25, y: 0.25}
   m_screenShakeDuration: 0.1
   m_cooldown: 10
-  m_minLevel: 1
+  m_minLevel: 2
   m_damageDelay: 0

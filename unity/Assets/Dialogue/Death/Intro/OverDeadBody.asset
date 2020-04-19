@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_text: Tempting. But I don't have enough space for both of you.
   m_responses:
-  - m_text: If I stay, Glorpo stays.
+  - m_text: If I stay, Glorpol stays.
     m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
-  - m_text: Glorpo belongs here!
+  - m_text: Glorpol belongs here!
     m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
   m_summonsPortal: 0
+  m_spawnsEnemies: 0
+  m_completesSequence: 0

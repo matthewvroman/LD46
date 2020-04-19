@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c9acad85828be469787e9ca460b25b, type: 3}
+  m_Name: Dialogue
+  m_EditorClassIdentifier: 
+  m_text: Wow, look at you kid. Never thought you'd be Level 2, huh?
+  m_responses:
+  - m_text: This is so exciting!
+    m_dialogue: {fileID: 11400000, guid: ca0f7e8ad9f81fe48957c6b036ac9bc2, type: 2}
+  - m_text: I'm just warming up!
+    m_dialogue: {fileID: 11400000, guid: ca0f7e8ad9f81fe48957c6b036ac9bc2, type: 2}
+  m_summonsPortal: 0
+  m_spawnsEnemies: 0
+  m_completesSequence: 0

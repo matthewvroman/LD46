@@ -21,3 +21,22 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 689ea2d97d927eb4a913604661d3e0ab, type: 2}
     completedSequenceDialogues:
     - {fileID: 11400000, guid: b032f474d883db044822d1fc516904ea, type: 2}
+  - level: 2
+    initialDialogues:
+    - {fileID: 11400000, guid: 874b8d51911df7d4da0056183d944f18, type: 2}
+    completedSequenceDialogues:
+    - {fileID: 11400000, guid: e13a47064badeb947a5a4dd9724a310f, type: 2}
+  - level: 3
+    initialDialogues:
+    - {fileID: 11400000, guid: 3fd45d88f4cd847429f6ceaca9485055, type: 2}
+    completedSequenceDialogues:
+    - {fileID: 11400000, guid: 65882b7688da8574dba097da42080bf4, type: 2}
+  - level: 4
+    initialDialogues:
+    - {fileID: 11400000, guid: 9b1ee4bdd9f63c644bcd021ba7173198, type: 2}
+    completedSequenceDialogues:
+    - {fileID: 11400000, guid: 9a7477b4ac4d6d946a02195ce71a6ff8, type: 2}
+  - level: 4
+    initialDialogues:
+    - {fileID: 11400000, guid: 24b784b5a5b664246b55ac259725c45b, type: 2}
+    completedSequenceDialogues: []
