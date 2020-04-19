@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
             Enemy enemy = results[i].transform.gameObject.GetComponentInChildren<Enemy>();
             if(enemy != null)
             {
-                enemy.Damage(0, Vector2.right * m_desiredDirection * 2.5f);
+                enemy.Damage(1, Vector2.right * m_desiredDirection * 2.5f);
                 hitEnemy = true;
             }
             

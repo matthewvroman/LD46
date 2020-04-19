@@ -62,6 +62,8 @@ public class Spell : ScriptableObject
         Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
         foreach(Enemy enemy in enemies)
         {
+            if(enemy.Dead) continue;
+            
             if(m_frontFacingOnly)
             {
                 if(player.DesiredDirection < 0 && enemy.transform.position.x >= player.transform.position.x)
