@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
             return s_instance;
         }
     }
-    private int m_level = 5;
+    private int m_level = 1;
     private int m_trueLevel = 1;
     public int TrueLevel { get => m_trueLevel; }
     public int Level { get => m_level; }
