@@ -23,8 +23,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip m_gameMusic;
     [SerializeField] private AudioSource m_sfxChannel1;
     [SerializeField] private AudioSource m_sfxChannel2;
+    [SerializeField] private AudioSource m_sfxChannel3;
     [SerializeField] private AudioClip m_buttonSfx;
     [SerializeField] private AudioClip m_dialogueSfx;
+    [SerializeField] private AudioClip m_attackSwing;
     [SerializeField] private AudioClip m_playerHitSfx;
     [SerializeField] private AudioClip m_enemyHitSfx;
     [SerializeField] private AudioClip m_meteorSfx;
@@ -111,5 +113,11 @@ public class AudioManager : MonoBehaviour
     {
         m_sfxChannel1.clip = m_portalDespawn;
         m_sfxChannel1.Play();
+    }
+
+    public void PlayAttackSwing()
+    {
+        m_sfxChannel3.clip = m_attackSwing;
+        m_sfxChannel3.Play();
     }
 }

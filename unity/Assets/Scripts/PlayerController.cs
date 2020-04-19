@@ -167,6 +167,7 @@ public class PlayerController : MonoBehaviour, IHealth
         m_rigidbody.velocity = velocity;
         m_rigidbody.AddForce(transform.right * 2.5f * m_desiredDirection, ForceMode2D.Impulse);
         m_lastAttackTime = Time.realtimeSinceStartup;
+        AudioManager.Instance.PlayAttackSwing();
 
         Vector3 hitPosition = m_hitPositions[m_attackIndex];
         if(m_desiredDirection < 0) hitPosition.x = -hitPosition.x;

@@ -168,19 +168,26 @@ public class BattleManager : MonoBehaviour
         {
             if(m_levelled)
             {
-                if(LevelManager.Instance.TrueLevel > LevelManager.Instance.Level)
-                {
-                    m_dialoguePanel.Display(m_introDialogueCharacter[LevelManager.Instance.Level-1], m_exitDialogues[LevelManager.Instance.Level-1]);
-                }
-                else
-                {
-                    m_dialoguePanel.Display(m_introDialogueCharacter[LevelManager.Instance.Level-2], m_exitDialogues[LevelManager.Instance.Level-2]);
-                }
+                StartCoroutine(ShowEndDialogue());
             }
             else
             {
                 SpawnEnemies();
             }
+        }
+    }
+
+    private IEnumerator ShowEndDialogue()
+    {
+        yield return new WaitForSeconds(1.5f);
+
+        if(LevelManager.Instance.TrueLevel > LevelManager.Instance.Level)
+        {
+            m_dialoguePanel.Display(m_introDialogueCharacter[LevelManager.Instance.Level-1], m_exitDialogues[LevelManager.Instance.Level-1]);
+        }
+        else
+        {
+            m_dialoguePanel.Display(m_introDialogueCharacter[LevelManager.Instance.Level-2], m_exitDialogues[LevelManager.Instance.Level-2]);
         }
     }
 

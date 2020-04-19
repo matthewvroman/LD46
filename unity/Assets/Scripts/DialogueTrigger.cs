@@ -64,7 +64,7 @@ public class DialogueTrigger : MonoBehaviour
             }
             else
             {
-                m_dialoguePanel.Exit();
+                //m_dialoguePanel.Exit();
             }
         }
     }

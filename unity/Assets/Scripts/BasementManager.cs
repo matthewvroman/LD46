@@ -29,6 +29,10 @@ public class BasementManager : MonoBehaviour
             m_intro.SetActive(true);
             s_seenIntro = true;
         }
+        else
+        {
+            m_intro.SetActive(false);
+        }
     }
 
     public void SpawnPortal()

@@ -16,5 +16,10 @@ MonoBehaviour:
   m_responses:
   - m_text: How do I do that?!
     m_dialogue: {fileID: 11400000, guid: 5e6b178ad2dd0aa46b705d73526512b3, type: 2}
-  - m_text: Rock on!
+  - m_text: I won't let Glorpol die!
     m_dialogue: {fileID: 11400000, guid: 5e6b178ad2dd0aa46b705d73526512b3, type: 2}
+  m_summonsPortal: 0
+  m_spawnsEnemies: 0
+  m_completesSequence: 0
+  m_completesGame: 0
+  m_restartsBattle: 0

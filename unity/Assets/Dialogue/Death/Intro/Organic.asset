@@ -16,7 +16,7 @@ MonoBehaviour:
   m_responses:
   - m_text: He's organic!
     m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
-  - m_text: Hey! Glorpal can hear you!
+  - m_text: Hey! Glorpol can hear you!
     m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
   m_summonsPortal: 0
   m_spawnsEnemies: 0
