@@ -16,6 +16,7 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] private Image m_characterImage;
     [SerializeField] private DialogueBox m_dialogueBox;
     [SerializeField] private DialogueBox[] m_responseBoxes;
+    [SerializeField] private GameObject m_gameComplete;
 
     private DialogueCharacter m_character;
 
@@ -135,6 +136,10 @@ public class DialoguePanel : MonoBehaviour
             BattleManager.Instance.SpawnEnemies();
         }
         m_character.CompletedSequence = m_dialogue.CompletesSequence;
+        if(m_dialogue.CompletesGame)
+        {
+            m_gameComplete.SetActive(true);
+        }
 
         if(response.Dialogue)
         {
