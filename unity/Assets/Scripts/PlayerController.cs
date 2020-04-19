@@ -90,6 +90,8 @@ public class PlayerController : MonoBehaviour, IHealth
     // Update is called once per frame
     void Update()
     {
+        if(m_state == State.Dead) return;
+
         Vector3 scale = m_animator.gameObject.transform.localScale;
         scale.x = Mathf.Lerp(scale.x, m_desiredDirection, Time.deltaTime * 15.0f);
         m_animator.gameObject.transform.localScale = scale;
@@ -201,13 +203,27 @@ public class PlayerController : MonoBehaviour, IHealth
         {
             this.m_state = State.Dead;
             if(OnDead != null) OnDead();
+            Die(knockback);
         }
         m_cameraEffects.Shake(Vector2.one * 0.05f, 0.05f);
         if(OnDamaged != null) OnDamaged();
     }
 
+    private void Die(Vector2 finalKnockback)
+    {
+        Vector2 impulse = finalKnockback * 2.0f; //increase knockback
+        impulse.y += 5.0f;
+        m_rigidbody.constraints = RigidbodyConstraints2D.None;
+        m_rigidbody.gravityScale = 2.0f;
+        m_rigidbody.AddForce(impulse, ForceMode2D.Impulse);
+        m_rigidbody.AddTorque(0.65f, ForceMode2D.Impulse);
+        m_renderer.sortingLayerName = "Foreground";
+    }
+
     void FixedUpdate()
     {
+        if(m_state == State.Dead) return;
+
         if(DialoguePanel.InDialogue)
         {
             m_rigidbody.velocity = Vector2.zero;

@@ -20,4 +20,4 @@ MonoBehaviour:
   m_spawnsEnemies: 0
   m_completesSequence: 0
   m_completesGame: 0
-  m_restartsBattle: 0
+  m_restartsBattle: 1

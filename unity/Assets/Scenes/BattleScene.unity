@@ -385,6 +385,7 @@ MonoBehaviour:
   m_healthBarOffset: {x: 0, y: 0.825, z: 0}
   m_maxHealth: 8
   m_healthBar: {fileID: 1474706676}
+  m_baseDamage: 0
   m_attackContactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -851,6 +852,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 58494386}
     m_Modifications:
+    - target: {fileID: 5250017303214661611, guid: a939c0baa7f6f334a8c3a48637b1f02f,
+        type: 3}
+      propertyPath: m_loading
+      value: 
+      objectReference: {fileID: 6530048401311441622, guid: 97101ef386ab043458282a8243f3fe7b,
+        type: 3}
     - target: {fileID: 5250017303214661622, guid: a939c0baa7f6f334a8c3a48637b1f02f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1472,6 +1479,7 @@ MonoBehaviour:
   m_healthBarOffset: {x: 0, y: 0.825, z: 0}
   m_maxHealth: 12
   m_healthBar: {fileID: 1583298555}
+  m_baseDamage: 0
   m_attackContactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -2271,6 +2279,7 @@ MonoBehaviour:
   m_healthBarOffset: {x: 0, y: 0.825, z: 0}
   m_maxHealth: 4
   m_healthBar: {fileID: 792096541}
+  m_baseDamage: 0
   m_attackContactFilter:
     useTriggers: 0
     useLayerMask: 0

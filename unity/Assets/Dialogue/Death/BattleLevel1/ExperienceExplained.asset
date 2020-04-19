@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_text: You need experience to level up! You didn't know this? ...oh boy.
   m_responses:
-  - m_text: I gotchu fam.
+  - m_text: Oh, I gotchu now.
     m_dialogue: {fileID: 11400000, guid: 752616eaa6eb0dc428c5cbe61f0d485a, type: 2}
   - m_text: Bring on the experience!
     m_dialogue: {fileID: 11400000, guid: 752616eaa6eb0dc428c5cbe61f0d485a, type: 2}
   m_summonsPortal: 0
   m_spawnsEnemies: 0
+  m_completesSequence: 0
+  m_completesGame: 0
+  m_restartsBattle: 0
