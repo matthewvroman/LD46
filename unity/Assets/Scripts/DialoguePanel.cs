@@ -106,7 +106,14 @@ public class DialoguePanel : MonoBehaviour
         if(m_dialogue.SummonsPortal)
         {
             //SUMMON PORTAL!
-            BasementManager.Instance.SpawnPortal();
+            if(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == "BasementScene")
+            {
+                BasementManager.Instance.SpawnPortal();
+            }
+            else
+            {
+                BattleManager.Instance.SpawnPortal();
+            }
         }
         if(m_dialogue.SpawnsEnemies)
         {

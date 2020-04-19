@@ -24,15 +24,19 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<Dialogue>m_introDialogues;
     [SerializeField] private DialogueCharacter m_introDialogueCharacter;
 
+    [SerializeField] private List<Dialogue>m_exitDialogues;
+
     [SerializeField] private PlayerController m_player;
     [SerializeField] private Enemy[] m_enemyPrefabs;
 
     [SerializeField] private Portal m_expelPortal;
+    [SerializeField] private Portal m_levelEndPortal;
 
     [SerializeField] private GameObject m_hud;
 
     public Action OnSpawnEnemies;
     
+    private bool m_levelled = false;
 
     private void Awake()
     {
@@ -42,6 +46,7 @@ public class BattleManager : MonoBehaviour
         }
 
         Enemy.Killed += OnEnemyKilled;
+        LevelManager.Instance.OnLevelUp += OnLevelUp;
         
         StartCoroutine(LevelIntro());
         //m_dialoguePanel.Display(m_introDialogueCharacter, m_introDialogues[LevelManager.Instance.Level-1]);
@@ -50,6 +55,7 @@ public class BattleManager : MonoBehaviour
     private void OnDisable()
     {
         Enemy.Killed -= OnEnemyKilled;
+        LevelManager.Instance.OnLevelUp -= OnLevelUp;
 
         if(s_instance == this)
         {
@@ -82,28 +88,61 @@ public class BattleManager : MonoBehaviour
         m_dialoguePanel.Display(m_introDialogueCharacter, m_introDialogues[LevelManager.Instance.Level-1]);
     }
 
+    public void SpawnPortal()
+    {
+        StartCoroutine(SpawnPortalCoroutine());
+    }
+
+    private IEnumerator SpawnPortalCoroutine()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        m_levelEndPortal.gameObject.SetActive(true);
+        m_levelEndPortal.Spawn();
+    }
+
     private List<Enemy>m_aliveEnemies = new List<Enemy>();
+
+    private int m_waveIndex = 0;
 
     public void SpawnEnemies()
     {
         for(int i=0; i<5; i++)
         {
             Vector3 position = m_player.transform.position;
-            position.x = UnityEngine.Random.Range(6.0f,9.0f);
+            if(m_waveIndex%2==0)
+            {
+                position.x = UnityEngine.Random.Range(6.0f,9.0f);
+            }
+            else
+            {
+                position.x = UnityEngine.Random.Range(-6.0f,-9.0f);
+            }
+            
             position.y = UnityEngine.Random.Range(-2.0f, -0.5f);
             Enemy enemy = GameObject.Instantiate(m_enemyPrefabs[0]);
             enemy.transform.position = position;
             m_aliveEnemies.Add(enemy);
         }
+        m_waveIndex++;
         if(OnSpawnEnemies != null) OnSpawnEnemies();
     }
 
     private void OnEnemyKilled(Enemy enemy)
     {
         m_aliveEnemies.Remove(enemy);
-        if(m_aliveEnemies.Count==0)
+        if(m_levelled)
+        {
+            m_dialoguePanel.Display(m_introDialogueCharacter, m_exitDialogues[LevelManager.Instance.Level-2]);
+        }
+        else if(m_aliveEnemies.Count==0)
         {
             SpawnEnemies();
         }
+    }
+
+    private void OnLevelUp(int level)
+    {
+        m_levelled = true;
     }
 }

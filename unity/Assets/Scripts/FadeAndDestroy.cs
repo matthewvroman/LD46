@@ -9,6 +9,8 @@ public class FadeAndDestroy : MonoBehaviour
     [SerializeField] private float m_fadeTime;
     public float FadeTime { get => m_fadeTime; set => m_fadeTime = value; }
     private float m_elapsedTime;
+    [SerializeField] private float m_delay;
+    public float Delay { get => m_delay; }
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,12 @@ public class FadeAndDestroy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(m_delay>0)
+        {
+            m_delay-=Time.deltaTime;
+            return;
+        }
+        
         m_elapsedTime += Time.deltaTime;
         m_elapsedTime = Mathf.Min(m_fadeTime, m_elapsedTime);
         Color color = m_spriteRenderer.color;

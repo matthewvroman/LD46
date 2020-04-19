@@ -30,6 +30,19 @@ public class HealthBar : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        int numRenderers = m_spriteRenderers.Length;
+        for(int i=0; i<numRenderers; i++)
+        {
+            if(m_spriteRenderers[i] != null) GameObject.Destroy(m_spriteRenderers[i].gameObject);
+            if(m_images[i] != null) GameObject.Destroy(m_images[i].gameObject);
+        }
+        m_spriteRenderers = null;
+        m_images = null;
+        SetInterface(m_healthInterface, m_showUndamaged, m_centered, m_useSprites);
+    }
+
     private void OnDamaged()
     {
         Debug.Log("OnDamaged::" + this.gameObject.name);

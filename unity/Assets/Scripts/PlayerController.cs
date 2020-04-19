@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour, IHealth
     [SerializeField] private HitEffect m_hitEffect;
     [SerializeField] private Vector3[] m_hitPositions;
     [SerializeField] private Spell[] m_spells;
+    public Spell[] Spells { get => m_spells; }
     [SerializeField] private ContactFilter2D m_attackContactFilter;
 
     private State m_state;
@@ -53,11 +54,28 @@ public class PlayerController : MonoBehaviour, IHealth
     public Action OnDamaged { get; set; }
 
     [SerializeField] private bool m_gameplayVersion;
+    public bool GameplayVersion { get => m_gameplayVersion; }
     
+    void OnEnable()
+    {
+        LevelManager.Instance.OnLevelUp += OnLevelUp;
+    }  
 
+    void OnDisable()
+    {
+        LevelManager.Instance.OnLevelUp -= OnLevelUp;
+    }
+
+    void OnLevelUp(int level)
+    {
+        m_maxHealth = m_currentHealth = LevelManager.Instance.MaxPlayerHealth;
+        m_healthBar.Reset();
+    }
     // Start is called before the first frame update
     void Start()
     {
+        m_maxHealth = LevelManager.Instance.MaxPlayerHealth;
+
         m_state = State.Move;
         m_desiredDirection = 1;
         m_currentHealth = m_maxHealth;
@@ -80,23 +98,36 @@ public class PlayerController : MonoBehaviour, IHealth
             {
                 StartCoroutine(Attack());
             }
-            if(Input.GetKeyDown(KeyCode.E) && m_state == State.Move)
+            if(Input.GetKeyDown(KeyCode.Alpha1) && m_state == State.Move)
             {
-                StartCoroutine(Cast());
+                if(m_spells[0].CanCast) StartCoroutine(Cast(0));
             }
+            if(Input.GetKeyDown(KeyCode.Alpha2) && m_state == State.Move)
+            {
+                if(m_spells[1].CanCast) StartCoroutine(Cast(1));
+            }
+            if(Input.GetKeyDown(KeyCode.Alpha3) && m_state == State.Move)
+            {
+                if(m_spells[2].CanCast) StartCoroutine(Cast(2));
+            }
+        }
+
+        for(int i=0; i<m_spells.Length; i++)
+        {
+            m_spells[i].Update();
         }
     }
 
-    private IEnumerator Cast()
+    private IEnumerator Cast(int spellIndex)
     {
         m_state = State.Cast;
         m_animator.SetBool("Casting", true);
         m_animator.SetTrigger("StartCast");
         m_rigidbody.velocity = Vector2.zero;
 
-        m_spells[0].MarkTargets(this);
+        m_spells[spellIndex].MarkTargets(this);
         yield return new WaitForSeconds(0.85f);
-        m_spells[0].Cast(this);
+        m_spells[spellIndex].Cast(this);
 
         yield return new WaitForSeconds(0.4f);
         m_animator.SetBool("Casting", false);

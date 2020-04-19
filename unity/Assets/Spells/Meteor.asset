@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f93e04091e13cee4e94b080702466c7e, type: 3}
-  m_Name: LightningStrike
+  m_Name: Meteor
   m_EditorClassIdentifier: 
-  m_name: Lightning Strike
-  m_maxTargets: 3
+  m_name: Meteor
+  m_maxTargets: 1
   m_maxRange: 99999
-  m_frontFacingOnly: 1
+  m_frontFacingOnly: 0
   m_spellCircle: {fileID: 5501674396772322908, guid: 8e50bd853efd71d49ba5e08c0a793be7,
     type: 3}
-  m_spellCircleScale: 0.75
-  m_damage: 4
-  m_damagePrefab: {fileID: 8935770827921650595, guid: 2864c60fd2a5732439352f314c47d06d,
+  m_spellCircleScale: 1
+  m_damage: 12
+  m_damagePrefab: {fileID: 8935770827921650595, guid: 405ac633bc77274429b15118bbc9db07,
     type: 3}
   m_damagePrefabParentedToEnemy: 1
   m_impulse: {x: 0, y: 0}
-  m_screenShakeMagnitude: {x: 0.25, y: 0.25}
-  m_screenShakeDuration: 0.1
+  m_screenShakeMagnitude: {x: 0.05, y: 0.05}
+  m_screenShakeDuration: 0.25
   m_cooldown: 10
   m_minLevel: 1
   m_damageDelay: 0

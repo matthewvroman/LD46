@@ -11,6 +11,7 @@ public class Portal : MonoBehaviour
     [SerializeField] private Vector2 m_distanceForFullSuction;
     [SerializeField] private PlayerController m_playerController;
     [SerializeField] private Loading m_loading;
+    [SerializeField] private string m_sceneToLoad;
 
     private bool m_suction = false;
     [SerializeField] private bool m_allowSuction;
@@ -140,7 +141,7 @@ public class Portal : MonoBehaviour
         }
 
         Loading loading = GameObject.Instantiate(m_loading);
-        loading.Load("BattleSCene");
+        loading.Load(m_sceneToLoad);
         
     }
 

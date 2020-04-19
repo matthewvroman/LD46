@@ -24,13 +24,24 @@ public class LevelManager : MonoBehaviour
 
     public int[] m_experience = new int[]
     {
+        100,
         250,
         500,
         750,
         1000,
-        2500,
         9999
     };
+
+    private float[] m_totalHealth = new float[]
+    {
+        12,
+        16,
+        20,
+        24,
+        28
+    };
+
+    public float MaxPlayerHealth { get => m_totalHealth[Level-1]; }
 
     private int m_currentExperience = 0;
     public int CurrentExperience { get => m_currentExperience; }

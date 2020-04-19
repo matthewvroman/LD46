@@ -286,6 +286,8 @@ MonoBehaviour:
   - {x: 0.4, y: 0, z: 0}
   m_spells:
   - {fileID: 11400000, guid: 82292c852b7c6184a882842c81b1746c, type: 2}
+  - {fileID: 11400000, guid: 0acefd5b2564c024e96367c1fde43fc7, type: 2}
+  - {fileID: 11400000, guid: 7c286f6b868d5074688af29758f22d57, type: 2}
   m_attackContactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -302,6 +304,7 @@ MonoBehaviour:
     maxNormalAngle: 0
   m_healthBar: {fileID: 0}
   m_healthBarOffset: {x: 60, y: 0, z: 0}
+  m_gameplayVersion: 0
 --- !u!70 &1992599936506224276
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

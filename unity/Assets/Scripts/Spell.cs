@@ -12,11 +12,22 @@ public class Spell : ScriptableObject
     [SerializeField] private GameObject m_spellCircle;
     [SerializeField] private float m_spellCircleScale;
     [SerializeField] private float m_damage;
+    public float Damage { get => m_damage; }
     [SerializeField] private GameObject m_damagePrefab;
     [SerializeField] private bool m_damagePrefabParentedToEnemy;
     [SerializeField] private Vector2 m_impulse;
+    public Vector2 Impulse { get => m_impulse; }
     [SerializeField] private Vector2 m_screenShakeMagnitude;
     [SerializeField] private float m_screenShakeDuration = 0.1f;
+    [SerializeField] private float m_cooldown;
+    [System.NonSerialized] private float m_currentCooldown;
+    public float CurrentCooldown { get { return m_currentCooldown; } }
+    [SerializeField] private int m_minLevel;
+    public int MinLevel { get { return m_minLevel; } }
+
+    public bool CanCast { get { return m_currentCooldown<=0.0f && LevelManager.Instance.Level>=m_minLevel; } }
+
+    [SerializeField] private float m_damageDelay;
 
     private List<Enemy> m_targets;
     private List<GameObject> m_spellCircles;
@@ -28,6 +39,13 @@ public class Spell : ScriptableObject
 
     public virtual void Cast(PlayerController player)
     {
+        RemoveSpellCircles();
+        DamageTargets();
+        m_currentCooldown = m_cooldown;
+    }
+
+    protected void RemoveSpellCircles()
+    {
         while(m_spellCircles.Count>0)
         {
             GameObject spellCircle = m_spellCircles[0];
@@ -38,7 +56,10 @@ public class Spell : ScriptableObject
             fd.Renderer = renderer;
             fd.FadeTime = 0.1f;
         }
+    }
 
+    protected void DamageTargets()
+    {
         foreach(Enemy target in m_targets)
         {
             GameObject damageObject = GameObject.Instantiate(m_damagePrefab);
@@ -47,10 +68,18 @@ public class Spell : ScriptableObject
                 damageObject.transform.SetParent(target.transform);
                 damageObject.transform.localPosition = target.SpellCircleOffset;
             }
-            target.Damage(m_damage, m_impulse);
-            if(target.Dead)
+            SpellAssist assist = damageObject.GetComponentInChildren<SpellAssist>();
+            if(assist)
             {
-                damageObject.transform.SetParent(null);
+                assist.SetSpell(this, target);
+            }
+            if(assist == null || !assist.HandlesDamage)
+            {
+                target.Damage(m_damage, m_impulse);
+                if(target.Dead)
+                {
+                    damageObject.transform.SetParent(null);
+                }
             }
         }
 
@@ -80,9 +109,21 @@ public class Spell : ScriptableObject
                     continue;
                 }
             }
-            player.StartCoroutine(AddSpellCircle(m_targets.Count*0.1f, enemy));
             m_targets.Add(enemy);
-            
+        }
+        m_targets.Sort((a,b)=>
+        {
+            if(Mathf.Abs(a.transform.position.x-player.transform.position.x)<Mathf.Abs(b.transform.position.x-player.transform.position.x)) return -1;
+            if(Mathf.Abs(a.transform.position.x-player.transform.position.x)>Mathf.Abs(b.transform.position.x-player.transform.position.x)) return 1;
+            return 0;
+        });
+        while(m_targets.Count>m_maxTargets)
+        {
+            m_targets.RemoveAt(m_targets.Count-1);
+        }
+        foreach(Enemy target in m_targets)
+        {
+            player.StartCoroutine(AddSpellCircle(m_targets.Count*0.1f, target));
         }
     }
 
@@ -98,9 +139,9 @@ public class Spell : ScriptableObject
 
     public void Update()
     {
-        if(m_targets != null)
+        if(m_currentCooldown > 0)
         {
-            
+            m_currentCooldown -= Time.deltaTime;
         }
     }
 
