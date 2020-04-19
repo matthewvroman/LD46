@@ -13,13 +13,22 @@ public class BasementManager : MonoBehaviour
         }
     }
 
+    private static bool s_seenIntro = false;
+
     [SerializeField] private Portal m_portal;
+    [SerializeField] private GameObject m_intro;
 
     private void Awake()
     {
         s_instance = this;
 
         m_portal.gameObject.SetActive(false);
+
+        if(s_seenIntro == false)
+        {
+            m_intro.SetActive(true);
+            s_seenIntro = true;
+        }
     }
 
     public void SpawnPortal()

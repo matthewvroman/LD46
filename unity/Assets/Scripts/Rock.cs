@@ -46,7 +46,6 @@ public class Rock : SpellAssist
         {
             //spawn rock
             rockNum++;
-            Debug.Log(rockNum);
             Vector3 position = Vector3.Lerp(m_startPosition, m_endPosition, (float)rockNum/(float)numRocks);
             position += offset;
             //stagger

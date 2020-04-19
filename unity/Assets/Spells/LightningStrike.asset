@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightningStrike
   m_EditorClassIdentifier: 
   m_name: Lightning Strike
-  m_maxTargets: 3
+  m_maxTargets: 5
   m_maxRange: 99999
   m_frontFacingOnly: 1
   m_spellCircle: {fileID: 5501674396772322908, guid: 8e50bd853efd71d49ba5e08c0a793be7,
