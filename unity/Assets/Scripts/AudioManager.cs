@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip m_meteorSfx;
     [SerializeField] private AudioClip m_lightningSfx;
     [SerializeField] private AudioClip m_rockSfx;
+    [SerializeField] private AudioClip m_circleSpawn;
     [SerializeField] private AudioClip m_portalSpawn;
     [SerializeField] private AudioClip m_portalGrabPlayer;
     [SerializeField] private AudioClip m_portalExpelPlayer;
@@ -118,6 +119,12 @@ public class AudioManager : MonoBehaviour
     public void PlayAttackSwing()
     {
         m_sfxChannel3.clip = m_attackSwing;
+        m_sfxChannel3.Play();
+    }
+
+    public void PlayCircleSpawnSfx()
+    {
+        m_sfxChannel3.clip = m_circleSpawn;
         m_sfxChannel3.Play();
     }
 }

@@ -23,6 +23,10 @@ public class BasementManager : MonoBehaviour
         s_instance = this;
 
         m_portal.gameObject.SetActive(false);
+        if(LevelManager.Instance.TrueLevel>5) //just us and gorpol
+        {
+            m_portal.gameObject.SetActive(true);
+        }
 
         if(s_seenIntro == false)
         {

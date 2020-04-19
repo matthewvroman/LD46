@@ -189,6 +189,7 @@ MonoBehaviour:
   m_meteorSfx: {fileID: 8300000, guid: e3c3b88b1ef586e4e95edf99f8abadbc, type: 3}
   m_lightningSfx: {fileID: 8300000, guid: b8820ba6c9dbccb43b0ba129d772162a, type: 3}
   m_rockSfx: {fileID: 8300000, guid: 30e4dd0342f42ef49aa50f3801423a88, type: 3}
+  m_circleSpawn: {fileID: 8300000, guid: 8d0538e0d85abeb4e80448206a788481, type: 3}
   m_portalSpawn: {fileID: 8300000, guid: f19dad80ce91b2a409ce759b1493d781, type: 3}
   m_portalGrabPlayer: {fileID: 8300000, guid: b094c31e34d35cf4e8b7fe57072ff52a, type: 3}
   m_portalExpelPlayer: {fileID: 8300000, guid: be69f714de66ac94cac5b3734b31cf5c, type: 3}

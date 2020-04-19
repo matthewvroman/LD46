@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour
         275,
         650,
         1000,
-        1000
+        1500
     };
 
     private float[] m_totalHealth = new float[]

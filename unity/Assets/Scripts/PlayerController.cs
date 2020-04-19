@@ -111,15 +111,15 @@ public class PlayerController : MonoBehaviour, IHealth
             {
                 StartCoroutine(Attack());
             }
-            if(Input.GetKeyDown(KeyCode.Alpha1) && m_state == State.Move)
+            if((Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1)) && m_state == State.Move)
             {
                 if(m_spells[0].CanCast) StartCoroutine(Cast(0));
             }
-            if(Input.GetKeyDown(KeyCode.Alpha2) && m_state == State.Move)
+            if((Input.GetKeyDown(KeyCode.Alpha2) || Input.GetKeyDown(KeyCode.Keypad2)) && m_state == State.Move)
             {
                 if(m_spells[1].CanCast) StartCoroutine(Cast(1));
             }
-            if(Input.GetKeyDown(KeyCode.Alpha3) && m_state == State.Move)
+            if((Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.Keypad3)) && m_state == State.Move)
             {
                 if(m_spells[2].CanCast) StartCoroutine(Cast(2));
             }

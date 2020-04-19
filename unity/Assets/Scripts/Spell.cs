@@ -171,6 +171,26 @@ public class Spell : ScriptableObject
             if(Mathf.Abs(a.transform.position.x-player.transform.position.x)>Mathf.Abs(b.transform.position.x-player.transform.position.x)) return 1;
             return 0;
         });
+        //hack for meteor
+        if(m_name == "Meteor")
+        {
+            Enemy firstFrontFacingEnemy = null;
+            foreach(Enemy target in m_targets)
+            {
+                if(firstFrontFacingEnemy == null)
+                {
+                    if(player.DesiredDirection < 0 && target.transform.position.x >= player.transform.position.x) continue;
+                    if(player.DesiredDirection > 0 && target.transform.position.x <= player.transform.position.x) continue;
+                    firstFrontFacingEnemy = target;
+                }
+            }
+            if(firstFrontFacingEnemy != null)
+            {
+                m_targets.Clear();
+                m_targets.Add(firstFrontFacingEnemy);
+            }
+        }
+
         while(m_targets.Count>m_maxTargets)
         {
             m_targets.RemoveAt(m_targets.Count-1);
@@ -191,6 +211,8 @@ public class Spell : ScriptableObject
         circle.transform.localPosition = enemy.SpellCircleOffset;
         circle.transform.localScale = Vector3.one * m_spellCircleScale;
         m_spellCircles.Add(circle);
+
+        AudioManager.Instance.PlayCircleSpawnSfx();
     }
 
     public void Update()

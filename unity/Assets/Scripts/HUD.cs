@@ -27,7 +27,7 @@ public class HUD : MonoBehaviour
 
     private void Update()
     {
-        m_levelDisplay.text = "Lv. " + LevelManager.Instance.Level.ToString("n0");
+        m_levelDisplay.text = "Lv. " + LevelManager.Instance.TrueLevel.ToString("n0");
         m_experienceDisplay.text = "(" + LevelManager.Instance.CurrentExperience.ToString("n0") + "/" + LevelManager.Instance.TotalExperience.ToString("n0") + ")";
     }
 }
