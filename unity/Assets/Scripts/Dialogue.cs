@@ -23,4 +23,7 @@ public class Dialogue : ScriptableObject
     [SerializeField] private bool m_completesGame;
     public bool CompletesGame { get => m_completesGame; }
 
+    [SerializeField] private bool m_restartsBattle;
+    public bool RestartsBattle { get => m_restartsBattle; }
+
 }

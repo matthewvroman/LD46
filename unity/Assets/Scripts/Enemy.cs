@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour, IHealth
 
     private float m_destroyAfterDeath = 5.0f;
 
-    protected float m_baseDamage;
+    [SerializeField] protected float m_baseDamage;
 
     [SerializeField] protected ContactFilter2D m_attackContactFilter;
     [SerializeField] private int m_experience;

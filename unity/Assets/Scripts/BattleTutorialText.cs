@@ -8,7 +8,8 @@ public class BattleTutorialText : MonoBehaviour
 {
     [SerializeField] private Text m_text;
     private bool m_hide = false;
-    
+    private bool m_seenAttackTutorial;
+
     void Start()
     {
         m_text = this.GetComponent<Text>();
@@ -43,8 +44,10 @@ public class BattleTutorialText : MonoBehaviour
 
     private void OnSpawnEnemies()
     {
+        if(m_seenAttackTutorial) return;
         m_hide = false;
         m_text.text = "[Use Spacebar to Attack]";
+        m_seenAttackTutorial = true;
     }
 
     private void OnEnemyKilled(Enemy enemy)

@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82de786ddffba4f4b906778dca2e3fe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_speed: 1.5
   m_rigidbody: {fileID: 5573124612540083346}
   m_spriteRenderer: {fileID: 5573124612066261327}
   m_animator: {fileID: 5573124612066261326}
@@ -220,6 +221,7 @@ MonoBehaviour:
   m_healthBarOffset: {x: 0, y: 0.6, z: 0}
   m_maxHealth: 4
   m_healthBar: {fileID: 5573124612829253574}
+  m_baseDamage: 0.5
   m_attackContactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -235,7 +237,6 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   m_experience: 5
-  m_speed: 1.5
   m_attackRange: 1
   m_timeBetweenAttacks: 1
   m_damagePerAttack: 1

@@ -458,6 +458,7 @@ MonoBehaviour:
   m_responseBoxes:
   - {fileID: 5250017303416333108}
   - {fileID: 5250017303305021768}
+  m_gameComplete: {fileID: 0}
 --- !u!1 &5250017303305021780
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class DialoguePanel : MonoBehaviour
     [SerializeField] private DialogueBox m_dialogueBox;
     [SerializeField] private DialogueBox[] m_responseBoxes;
     [SerializeField] private GameObject m_gameComplete;
+    [SerializeField] private Loading m_loading;
 
     private DialogueCharacter m_character;
 
@@ -138,7 +139,14 @@ public class DialoguePanel : MonoBehaviour
         m_character.CompletedSequence = m_dialogue.CompletesSequence;
         if(m_dialogue.CompletesGame)
         {
+            LevelManager.Instance.GameComplete = true;
             m_gameComplete.SetActive(true);
+        }
+
+        if(m_dialogue.RestartsBattle)
+        {
+            Loading loading = GameObject.Instantiate(m_loading);
+            loading.Load("BattleScene");
         }
 
         if(response.Dialogue)

@@ -49,6 +49,9 @@ public class LevelManager : MonoBehaviour
 
     public int TotalExperience { get => m_experience[Level-1]; }
 
+    private bool m_gameComplete;
+    public bool GameComplete { get => m_gameComplete; set => m_gameComplete = value; }
+
     public Action<int> OnLevelUp;
 
     private void OnEnable()

@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour, IHealth
 
     public Action OnDamaged { get; set; }
 
+    public Action OnDead;
+
     [SerializeField] private bool m_gameplayVersion;
     public bool GameplayVersion { get => m_gameplayVersion; }
     
@@ -184,7 +186,7 @@ public class PlayerController : MonoBehaviour, IHealth
         if(hitEnemy)
         {
             m_hitEffect.Show(hitPosition);
-            m_cameraEffects.Shake(Vector2.one * 0.1f, 0.1f);
+            m_cameraEffects.Shake(Vector2.one * 0.05f, 0.05f);
         }
 
         yield return new WaitForSeconds(0.15f);
@@ -195,9 +197,10 @@ public class PlayerController : MonoBehaviour, IHealth
     public virtual void Damage(float damage, Vector2 knockback, float damageDuration=0.15f)
     {
         m_currentHealth -= damage;
-        if(m_currentHealth <= 0)
+        if(m_currentHealth <= 0 && this.m_state != State.Dead)
         {
             this.m_state = State.Dead;
+            if(OnDead != null) OnDead();
         }
         m_cameraEffects.Shake(Vector2.one * 0.05f, 0.05f);
         if(OnDamaged != null) OnDamaged();

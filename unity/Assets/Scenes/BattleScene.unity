@@ -2093,6 +2093,10 @@ MonoBehaviour:
     speedModifier: 2
     expModifier: 5
     healthModifier: 5
+  m_deadCharacter: {fileID: 11400000, guid: 628c71ab21f4bbb4ab55c455856b17f1, type: 2}
+  m_deadDialogue: {fileID: 11400000, guid: 5fabe1c2a46b9ae4281adba2ea643829, type: 2}
+  m_deadCharacterAlt: {fileID: 11400000, guid: b1f205a602ae96b4f99ea8a87df7abf5, type: 2}
+  m_deadDialogueAlt: {fileID: 11400000, guid: 0505b7c06d4a2354ba52428739a5ffbd, type: 2}
 --- !u!4 &1672087526
 Transform:
   m_ObjectHideFlags: 0

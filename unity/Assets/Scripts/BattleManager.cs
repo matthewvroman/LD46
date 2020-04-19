@@ -62,6 +62,7 @@ public class BattleManager : MonoBehaviour
 
         Enemy.Killed += OnEnemyKilled;
         LevelManager.Instance.OnLevelUp += OnLevelUp;
+        m_player.OnDead += OnPlayerDied;
 
         m_initialLevel = LevelManager.Instance.Level;
         
@@ -73,6 +74,7 @@ public class BattleManager : MonoBehaviour
     {
         Enemy.Killed -= OnEnemyKilled;
         LevelManager.Instance.OnLevelUp -= OnLevelUp;
+        m_player.OnDead -= OnPlayerDied;
 
         if(s_instance == this)
         {
@@ -182,5 +184,23 @@ public class BattleManager : MonoBehaviour
     private void OnLevelUp(int level)
     {
         m_levelled = true;
+    }
+
+    [SerializeField] private DialogueCharacter m_deadCharacter;
+    [SerializeField] private Dialogue m_deadDialogue;
+
+    [SerializeField] private DialogueCharacter m_deadCharacterAlt;
+    [SerializeField] private Dialogue m_deadDialogueAlt;
+
+    private void OnPlayerDied()
+    {
+        if(LevelManager.Instance.GameComplete)
+        {
+            m_dialoguePanel.Display(m_deadCharacterAlt, m_deadDialogueAlt);
+        }
+        else
+        {
+            m_dialoguePanel.Display(m_deadCharacter, m_deadDialogue);
+        }
     }
 }
