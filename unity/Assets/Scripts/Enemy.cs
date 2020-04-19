@@ -3,48 +3,64 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHealth
 {
-    private enum State
+    public enum State
     {
         Moving,
+        Attacking,
         Damaged,
-        Dead
+        Dead,
+        Retreating
     }
-    [SerializeField] private Rigidbody2D m_rigidbody;
+    [SerializeField] protected Rigidbody2D m_rigidbody;
+    public Rigidbody2D Rigidbody { get => m_rigidbody; }
 
-    [SerializeField] private SpriteRenderer m_spriteRenderer;
+    [SerializeField] protected SpriteRenderer m_spriteRenderer;
 
-    [SerializeField] private Vector3 m_spellCircleOffset;
+    [SerializeField] protected Animator m_animator;
+
+    [SerializeField] protected Vector3 m_spellCircleOffset;
     public Vector3 SpellCircleOffset { get => m_spellCircleOffset; }
 
-    [SerializeField] private Vector3 m_healthBarOffset;
+    [SerializeField] protected Vector3 m_healthBarOffset;
     public Vector3 HealthBarOffset { get => m_healthBarOffset; }
 
-    [SerializeField] private float m_maxHealth;
+    [SerializeField] protected float m_maxHealth;
     public float MaxHealth { get => m_maxHealth; }
-    private float m_currentHealth;
+    protected float m_currentHealth;
     public float CurrentHealth { get => m_currentHealth; }
     public bool Dead { get => m_currentHealth <= 0.0f; }
 
-    private State m_state;
+    [SerializeField] protected HealthBar m_healthBar;
 
-    private PlayerController m_player;
+    protected State m_state;
+    public State EnemyState { get => m_state; }
 
-    private float m_damageDuration;
+    protected PlayerController m_player;
 
-    public Action OnDamaged;
+    protected float m_damageDuration;
+
+    public Action OnDamaged { get; set; }
+
+    protected int m_desiredDirection;
+
+    private float m_destroyAfterDeath = 5.0f;
+
+    [SerializeField] protected ContactFilter2D m_attackContactFilter;
+    [SerializeField] private int m_experience;
 
 
     // Start is called before the first frame update
-    void Awake()
+    protected virtual void Awake()
     {
         m_player = GameObject.FindObjectOfType<PlayerController>();
         m_currentHealth = m_maxHealth;
+        m_healthBar.SetInterface(this);
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if(m_state == State.Damaged)
         {
@@ -59,11 +75,27 @@ public class Enemy : MonoBehaviour
         {
             this.transform.Rotate(this.transform.forward * 360.0f*Time.deltaTime);
             this.transform.localScale += Vector3.one * Time.deltaTime * 3.0f;
-        
+            m_destroyAfterDeath -= Time.deltaTime;
+            if(m_destroyAfterDeath <= 0.0f)
+            {
+                GameObject.Destroy(this.gameObject);
+            }
+        }
+
+        if(m_state == State.Moving || m_state == State.Retreating)
+        {
+            if(m_rigidbody.velocity.x != 0)
+            {
+                m_desiredDirection = m_rigidbody.velocity.x < 0? 1:-1;
+            }
+
+            Vector3 scale = m_animator.gameObject.transform.localScale;
+            scale.x = Mathf.Lerp(scale.x, m_desiredDirection, Time.deltaTime * 15.0f);
+            m_animator.gameObject.transform.localScale = scale;
         }
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if(m_state == State.Moving)
         {
@@ -71,7 +103,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Damage(float damage, Vector2 knockback, float damageDuration=0.15f)
+    public virtual void Damage(float damage, Vector2 knockback, float damageDuration=0.15f)
     {
         if(m_state == State.Dead) return;
 

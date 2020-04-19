@@ -54,6 +54,20 @@ public class Sortable : MonoBehaviour {
 		}
 	}
 
+	public void AddExtras(SpriteRenderer[] array)
+	{
+		SpriteRenderer[] concat = new SpriteRenderer[array.Length + m_extraRenderers.Length];
+		for(int i=0; i<array.Length; i++)
+		{
+			concat[i] = array[i];
+		}
+		for(int i=0; i<m_extraRenderers.Length; i++)
+		{
+			concat[i+array.Length] = m_extraRenderers[i];
+		}
+		m_extraRenderers = concat;
+	}
+
 	public void OnDrawGizmos()
 	{
 		SpriteRenderer spriteRenderer = this.GetComponent<SpriteRenderer>();

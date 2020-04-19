@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89c9acad85828be469787e9ca460b25b, type: 3}
+  m_Name: IllHelp
+  m_EditorClassIdentifier: 
+  m_text: I have a spell book that could help. Dark magic and whatnot
+  m_responses:
+  - m_text: You can't tempt me devil!
+    m_dialogue: {fileID: 11400000, guid: b5ad19e529643be41a2d7d8dd1b520fc, type: 2}
+  - m_text: Tell me more!
+    m_dialogue: {fileID: 11400000, guid: 8594cf07581bc384eac8f9e01071eadf, type: 2}

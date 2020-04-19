@@ -1,14 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IHealth
 {
     private enum State
     {
         Move,
         Attack,
-        Cast
+        Cast,
+        Dead
     }
     [SerializeField] private float m_speed;
     [SerializeField] private float m_verticalSpeed;
@@ -32,6 +34,23 @@ public class PlayerController : MonoBehaviour
     private float m_lastAttackTime;
 
     private CameraEffects m_cameraEffects;
+
+    //IHealth
+
+    [SerializeField] private HealthBar m_healthBar;
+
+    private float m_maxHealth = 12;
+    public float MaxHealth { get { return m_maxHealth; } }
+
+    private float m_currentHealth;
+    public float CurrentHealth  { get { return m_currentHealth; } }
+
+    public bool Dead  { get { return m_currentHealth<=0; } }
+
+    [SerializeField] private Vector3 m_healthBarOffset;
+    public Vector3 HealthBarOffset { get { return m_healthBarOffset; } }
+
+    public Action OnDamaged { get; set; }
     
 
     // Start is called before the first frame update
@@ -39,8 +58,11 @@ public class PlayerController : MonoBehaviour
     {
         m_state = State.Move;
         m_desiredDirection = 1;
+        m_currentHealth = m_maxHealth;
 
         m_cameraEffects = GameObject.FindObjectOfType<CameraEffects>();
+
+        m_healthBar.SetInterface(this, true, false, false);
     }
 
     // Update is called once per frame
@@ -124,6 +146,17 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.15f);
         m_animator.SetBool("Attacking", false);
         m_state = State.Move;
+    }
+
+    public virtual void Damage(float damage, Vector2 knockback, float damageDuration=0.15f)
+    {
+        m_currentHealth -= damage;
+        if(m_currentHealth <= 0)
+        {
+            this.m_state = State.Dead;
+        }
+        m_cameraEffects.Shake(Vector2.one * 0.05f, 0.05f);
+        if(OnDamaged != null) OnDamaged();
     }
 
     void FixedUpdate()

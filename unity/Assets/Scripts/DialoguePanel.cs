@@ -90,7 +90,6 @@ public class DialoguePanel : MonoBehaviour
                 responseBox.Exit(0.0f);
             }
         }
-         
     }
 
     private void OnClickedResponseAnimationComplete(DialogueResponse response)
@@ -102,6 +101,12 @@ public class DialoguePanel : MonoBehaviour
             {
                 responseBox.Exit(0.125f);
             }
+        }
+
+        if(m_dialogue.SummonsPortal)
+        {
+            //SUMMON PORTAL!
+            BasementManager.Instance.SpawnPortal();
         }
 
         if(response.Dialogue)

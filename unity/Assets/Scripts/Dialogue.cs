@@ -11,4 +11,7 @@ public class Dialogue : ScriptableObject
     public DialogueResponse[] Responses { get => m_responses; }
 
     //todo prereq bools
+    [SerializeField] private bool m_summonsPortal;
+    public bool SummonsPortal { get => m_summonsPortal; }
+
 }

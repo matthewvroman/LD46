@@ -56,7 +56,7 @@ public class Portal : MonoBehaviour
         float startDistance = direction.magnitude;
         float distance = startDistance;
 
-        while(distance > 0.02f)
+        while(distance > 0.15f)
         {
             direction = this.transform.position - m_playerController.transform.position;
             distance = direction.magnitude;

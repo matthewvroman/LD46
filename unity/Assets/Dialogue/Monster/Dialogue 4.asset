@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89c9acad85828be469787e9ca460b25b, type: 3}
-  m_Name: Dialogue 1
+  m_Name: Dialogue 4
   m_EditorClassIdentifier: 
-  m_text: Dead?! That thing. No it's very much alive.. unfortunately
+  m_text: ASDasdfasdfasdf
   m_responses:
-  - m_text: Oh, cool cool cool
-    m_dialogue: {fileID: 0}
-  - m_text: This is ridiculous
+  - m_text: I ... love you too Glorpo
     m_dialogue: {fileID: 0}

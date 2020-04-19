@@ -32,6 +32,7 @@ public class Spell : ScriptableObject
         {
             GameObject spellCircle = m_spellCircles[0];
             m_spellCircles.RemoveAt(0);
+            spellCircle.transform.SetParent(null);
             SpriteRenderer renderer = spellCircle.GetComponentInChildren<SpriteRenderer>();
             FadeAndDestroy fd = spellCircle.AddComponent<FadeAndDestroy>();
             fd.Renderer = renderer;
@@ -47,6 +48,10 @@ public class Spell : ScriptableObject
                 damageObject.transform.localPosition = target.SpellCircleOffset;
             }
             target.Damage(m_damage, m_impulse);
+            if(target.Dead)
+            {
+                damageObject.transform.SetParent(null);
+            }
         }
 
         if(m_screenShakeMagnitude.magnitude > 0 && m_targets.Count>0)
@@ -63,7 +68,7 @@ public class Spell : ScriptableObject
         foreach(Enemy enemy in enemies)
         {
             if(enemy.Dead) continue;
-            
+
             if(m_frontFacingOnly)
             {
                 if(player.DesiredDirection < 0 && enemy.transform.position.x >= player.transform.position.x)

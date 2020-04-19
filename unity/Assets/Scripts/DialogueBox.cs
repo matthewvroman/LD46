@@ -141,6 +141,8 @@ public class DialogueBox : MonoBehaviour
 
     public void Exit(float delay)
     {
+        if(!this.gameObject.activeInHierarchy) return;
+
         Vector3 to = m_localDefaultPosition;
         //to.x -= 200;
         StopAllCoroutines();

@@ -19,7 +19,7 @@ MonoBehaviour:
   m_spellCircle: {fileID: 5501674396772322908, guid: 8e50bd853efd71d49ba5e08c0a793be7,
     type: 3}
   m_spellCircleScale: 0.75
-  m_damage: 1
+  m_damage: 4
   m_damagePrefab: {fileID: 8935770827921650595, guid: 2864c60fd2a5732439352f314c47d06d,
     type: 3}
   m_damagePrefabParentedToEnemy: 1

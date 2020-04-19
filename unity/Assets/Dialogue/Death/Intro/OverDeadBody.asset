@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89c9acad85828be469787e9ca460b25b, type: 3}
-  m_Name: Dialogue
+  m_Name: OverDeadBody
   m_EditorClassIdentifier: 
-  m_text: Uh nope. I'm not dealing with that.
+  m_text: Tempting. But I don't have enough space for both of you.
   m_responses:
-  - m_text: Isn't it dead though?
-    m_dialogue: {fileID: 11400000, guid: 1d10bf0ed6ad87445876ee63957719ea, type: 2}
-  - m_text: Ten buckaroos says you can
-    m_dialogue: {fileID: 0}
+  - m_text: If I stay, Glorpo stays.
+    m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
+  - m_text: Glorpo belongs here!
+    m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
+  m_summonsPortal: 0
