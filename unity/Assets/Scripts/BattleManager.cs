@@ -60,14 +60,17 @@ public class BattleManager : MonoBehaviour
             s_instance = this;
         }
 
-        Enemy.Killed += OnEnemyKilled;
-        LevelManager.Instance.OnLevelUp += OnLevelUp;
-        m_player.OnDead += OnPlayerDied;
-
         m_initialLevel = LevelManager.Instance.Level;
         
         StartCoroutine(LevelIntro());
         //m_dialoguePanel.Display(m_introDialogueCharacter, m_introDialogues[LevelManager.Instance.Level-1]);
+    }
+
+    private void OnEnable()
+    {
+        Enemy.Killed += OnEnemyKilled;
+        LevelManager.Instance.OnLevelUp += OnLevelUp;
+        m_player.OnDead += OnPlayerDied;
     }
 
     private void OnDisable()
@@ -194,6 +197,7 @@ public class BattleManager : MonoBehaviour
 
     private void OnPlayerDied()
     {
+        LevelManager.Instance.ClearExp();
         if(LevelManager.Instance.GameComplete)
         {
             m_dialoguePanel.Display(m_deadCharacterAlt, m_deadDialogueAlt);

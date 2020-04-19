@@ -2078,28 +2078,28 @@ MonoBehaviour:
     maxEnemiesPerWave: 8
     damageModifier: 0
     speedModifier: 0.5
-    expModifier: 1
+    expModifier: 2
     healthModifier: 2
   - canSpawnBothSidesAtOnce: 1
     minEnemiesPerWave: 5
     maxEnemiesPerWave: 10
     damageModifier: 0
     speedModifier: 1
-    expModifier: 2
+    expModifier: 5
     healthModifier: 4
   - canSpawnBothSidesAtOnce: 1
     minEnemiesPerWave: 7
     maxEnemiesPerWave: 12
     damageModifier: 0
     speedModifier: 1.5
-    expModifier: 3
+    expModifier: 7
     healthModifier: 6
   - canSpawnBothSidesAtOnce: 1
     minEnemiesPerWave: 8
     maxEnemiesPerWave: 12
     damageModifier: 1
     speedModifier: 2
-    expModifier: 5
+    expModifier: 7
     healthModifier: 5
   m_deadCharacter: {fileID: 11400000, guid: 628c71ab21f4bbb4ab55c455856b17f1, type: 2}
   m_deadDialogue: {fileID: 11400000, guid: 5fabe1c2a46b9ae4281adba2ea643829, type: 2}

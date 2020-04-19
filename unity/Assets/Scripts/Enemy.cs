@@ -135,6 +135,7 @@ public class Enemy : MonoBehaviour, IHealth
         m_rigidbody.constraints = RigidbodyConstraints2D.None;
         m_rigidbody.gravityScale = 2.0f;
         m_rigidbody.AddForce(impulse, ForceMode2D.Impulse);
+        this.GetComponent<Collider2D>().isTrigger = true;
         m_spriteRenderer.sortingLayerName = "Foreground";
         if(Killed != null) Killed(this);
     }
