@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,9 @@ public class DialogueTrigger : MonoBehaviour
     private float m_alphaSpeed = 5.0f;
     private float m_positionSpeed = 5.0f;
 
+    public static Action OnEnterDialogueTrigger;
+    public static Action OnExitDialogueTrigger;
+
     private void Awake()
     {
         m_endingLocalPosition = m_speechBubble.transform.localPosition;
@@ -29,6 +33,8 @@ public class DialogueTrigger : MonoBehaviour
         if(collider.gameObject.GetComponent<PlayerController>() == null) return;
 
         m_inTrigger = true;
+
+        if(OnEnterDialogueTrigger != null) OnEnterDialogueTrigger();
     }
 
     private void OnTriggerExit2D(Collider2D collider)
@@ -36,6 +42,8 @@ public class DialogueTrigger : MonoBehaviour
         if(collider.gameObject.GetComponent<PlayerController>() == null) return;
         
         m_inTrigger = false;
+
+        if(OnExitDialogueTrigger != null) OnExitDialogueTrigger();
     }
 
     private void Update()

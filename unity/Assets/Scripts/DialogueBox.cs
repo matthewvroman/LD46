@@ -97,7 +97,7 @@ public class DialogueBox : MonoBehaviour
                 if(index != -1)
                 {
                     numCharactersToWrite = index+1;
-                    timeUntilNextCharacters = 0.35f;
+                    timeUntilNextCharacters = 0.25f;
                 }
                 else
                 {

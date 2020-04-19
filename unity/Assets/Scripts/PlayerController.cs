@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour, IHealth
     public Vector3 HealthBarOffset { get { return m_healthBarOffset; } }
 
     public Action OnDamaged { get; set; }
+
+    [SerializeField] private bool m_gameplayVersion;
     
 
     // Start is called before the first frame update
@@ -72,13 +74,16 @@ public class PlayerController : MonoBehaviour, IHealth
         scale.x = Mathf.Lerp(scale.x, m_desiredDirection, Time.deltaTime * 15.0f);
         m_animator.gameObject.transform.localScale = scale;
 
-        if(Input.GetKeyDown(KeyCode.Q) && m_state == State.Move)
+        if(m_gameplayVersion)
         {
-            StartCoroutine(Attack());
-        }
-        if(Input.GetKeyDown(KeyCode.E) && m_state == State.Move)
-        {
-            StartCoroutine(Cast());
+            if(Input.GetKeyDown(KeyCode.Space) && m_state == State.Move)
+            {
+                StartCoroutine(Attack());
+            }
+            if(Input.GetKeyDown(KeyCode.E) && m_state == State.Move)
+            {
+                StartCoroutine(Cast());
+            }
         }
     }
 

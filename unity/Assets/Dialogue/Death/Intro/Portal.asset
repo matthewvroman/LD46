@@ -19,3 +19,5 @@ MonoBehaviour:
   - m_text: I'm on it!
     m_dialogue: {fileID: 0}
   m_summonsPortal: 1
+  m_spawnsEnemies: 0
+  m_completesSequence: 1

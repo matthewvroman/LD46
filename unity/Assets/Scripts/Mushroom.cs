@@ -29,6 +29,11 @@ public class Mushroom : Enemy
             offset.x *= m_desiredDirection;
             distance += offset;
 
+            if(distance.x > m_attackRange*2.0f)
+            {
+                distance.y = 0.0f; //don't even worry about getting on the players Y plane until we're close
+            }
+
             m_rigidbody.velocity = distance.normalized * m_speed;
 
             m_timeUntilNextAttack -= Time.deltaTime;

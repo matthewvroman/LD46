@@ -234,7 +234,8 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
-  m_speed: 1
+  m_experience: 5
+  m_speed: 1.5
   m_attackRange: 1
   m_timeBetweenAttacks: 1
   m_damagePerAttack: 1

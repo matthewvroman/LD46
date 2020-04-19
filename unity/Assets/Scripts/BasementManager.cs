@@ -13,13 +13,13 @@ public class BasementManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private GameObject m_portal;
+    [SerializeField] private Portal m_portal;
 
     private void Awake()
     {
         s_instance = this;
 
-        m_portal.SetActive(false);
+        m_portal.gameObject.SetActive(false);
     }
 
     public void SpawnPortal()
@@ -31,6 +31,7 @@ public class BasementManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.25f);
 
-        m_portal.SetActive(true);
+        m_portal.gameObject.SetActive(true);
+        m_portal.Spawn();
     }
 }

@@ -15,4 +15,14 @@ MonoBehaviour:
   m_name: Monster
   m_displaySprite: {fileID: 21300000, guid: 9083566b0812b354d9b9459d9e158155, type: 3}
   m_displayOffset: {x: 0, y: 0}
-  m_dialogue: {fileID: 11400000, guid: ce0f6a909f0b1044a9d2912b754a04b0, type: 2}
+  m_levelPairs:
+  - level: 1
+    initialDialogues:
+    - {fileID: 11400000, guid: ef1c8a0842182c34785b02b30e6affb4, type: 2}
+    - {fileID: 11400000, guid: 5896c5f4c1505a148abc9a1405ac7e25, type: 2}
+    - {fileID: 11400000, guid: e87100221dc83ff43995f987c021233d, type: 2}
+    - {fileID: 11400000, guid: 1bd332bd07d5303478e2bb66e3605025, type: 2}
+    - {fileID: 11400000, guid: 7a1d0fb0087b97a4da34f41e00198216, type: 2}
+    - {fileID: 11400000, guid: 3e44b7bf00e8b784a9b9eb0369603c72, type: 2}
+    - {fileID: 11400000, guid: ce0f6a909f0b1044a9d2912b754a04b0, type: 2}
+    completedSequenceDialogues: []

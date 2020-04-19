@@ -108,6 +108,14 @@ public class DialoguePanel : MonoBehaviour
             //SUMMON PORTAL!
             BasementManager.Instance.SpawnPortal();
         }
+        if(m_dialogue.SpawnsEnemies)
+        {
+            BattleManager.Instance.SpawnEnemies();
+        }
+        if(m_dialogue.CompletesSequence)
+        {
+            m_character.CompletedSequence = true;
+        }
 
         if(response.Dialogue)
         {

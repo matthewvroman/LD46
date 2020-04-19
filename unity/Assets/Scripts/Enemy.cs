@@ -49,6 +49,9 @@ public class Enemy : MonoBehaviour, IHealth
 
     [SerializeField] protected ContactFilter2D m_attackContactFilter;
     [SerializeField] private int m_experience;
+    public int Experience { get => m_experience; }
+
+    public static Action<Enemy>Killed;
 
 
     // Start is called before the first frame update
@@ -129,5 +132,6 @@ public class Enemy : MonoBehaviour, IHealth
         m_rigidbody.gravityScale = 2.0f;
         m_rigidbody.AddForce(impulse, ForceMode2D.Impulse);
         m_spriteRenderer.sortingLayerName = "Foreground";
+        if(Killed != null) Killed(this);
     }
 }

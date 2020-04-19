@@ -14,4 +14,10 @@ public class Dialogue : ScriptableObject
     [SerializeField] private bool m_summonsPortal;
     public bool SummonsPortal { get => m_summonsPortal; }
 
+    [SerializeField] private bool m_spawnsEnemies;
+    public bool SpawnsEnemies { get => m_spawnsEnemies; }
+
+    [SerializeField] private bool m_completesSequence;
+    public bool CompletesSequence { get => m_completesSequence; }
+
 }

@@ -242,6 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3975295073756513719}
   - component: {fileID: 5560026698827525908}
+  - component: {fileID: 2804570263423521881}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -277,6 +278,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7048716764301775878}
   m_CullTransparentMesh: 0
+--- !u!114 &2804570263423521881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7048716764301775878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64338ea2c5d15ce43a7e923262aa72fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_experiencePrefab: {fileID: 501951810982720594, guid: e7e1988f0c27d9c4eaaae9f10339f87b,
+    type: 3}
+  m_experienceDisplay: {fileID: 3164817907637880303}
+  m_levelDisplay: {fileID: 8338732000225178499}
 --- !u!1 &8313545467505630412
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,3 +423,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: be81e0786e2b36a4d8480c9f329876f7, type: 3}
   - {fileID: 21300000, guid: 95c9e2c516c35ab4a8bfc9d065058d35, type: 3}
   m_heartOffsets: 25
+  m_sortable: {fileID: 0}

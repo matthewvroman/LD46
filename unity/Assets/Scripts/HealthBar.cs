@@ -73,7 +73,6 @@ public class HealthBar : MonoBehaviour
         int pieceCount = (int)m_healthInterface.CurrentHealth%(int)(healthPerHeartPiece*m_heartSprites.Length);
         for(int i=0; i<m_spriteRenderers.Length; i++)
         {
-            Debug.Log(i + " / " + numFullHearts + "/" + m_useSprites);
             if(i<numFullHearts)
             {
                 if(m_useSprites)

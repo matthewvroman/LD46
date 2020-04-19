@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89c9acad85828be469787e9ca460b25b, type: 3}
-  m_Name: Dialogue
+  m_Name: Dangerous
   m_EditorClassIdentifier: 
-  m_text: GRoasgdhasdfjkafsd
+  m_text: Dangerous? For me? No. Oh you mean for you? Yes. Absolutely.
   m_responses:
-  - m_text: DUDE! YES!!
-    m_dialogue: {fileID: 0}
+  - m_text: ...
+    m_dialogue: {fileID: 11400000, guid: c8fa020aab52b864485b2eb49f00eb2a, type: 2}
   m_summonsPortal: 0
   m_spawnsEnemies: 0
