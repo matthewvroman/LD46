@@ -15,6 +15,11 @@ MonoBehaviour:
   m_text: Here's the thing. I can totally take it. It's almost dead anyways.
   m_responses:
   - m_text: Almost doesn't cut it!
-    m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
+    m_dialogue: {fileID: 11400000, guid: 0a18304f615d1c743b51c31a56c76ed7, type: 2}
   - m_text: Over my dead body!
     m_dialogue: {fileID: 11400000, guid: f47c154bae11349449d02221f76da953, type: 2}
+  m_summonsPortal: 0
+  m_spawnsEnemies: 0
+  m_completesSequence: 0
+  m_completesGame: 0
+  m_restartsBattle: 0

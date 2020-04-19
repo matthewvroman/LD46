@@ -62,6 +62,8 @@ public class Rock : SpellAssist
             m_cameraEffects.Shake(new Vector3(0.1f, 0.1f), 0.15f);
             m_timeUntilNextRock = m_timeBetweenRocks;
 
+            AudioManager.Instance.PlayRockSfx();
+
             Enemy[] enemies = GameObject.FindObjectsOfType<Enemy>();
             foreach(Enemy enemy in enemies)
             {

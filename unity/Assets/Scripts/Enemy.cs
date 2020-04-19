@@ -129,6 +129,8 @@ public class Enemy : MonoBehaviour, IHealth
         }
 
         m_flash.Flash(damageDuration);
+
+        AudioManager.Instance.PlayEnemyHitSfx();
     }
 
     private void Die(Vector2 finalKnockback)

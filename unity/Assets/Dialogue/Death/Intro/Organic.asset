@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89c9acad85828be469787e9ca460b25b, type: 3}
-  m_Name: OverDeadBody
+  m_Name: Organic
   m_EditorClassIdentifier: 
-  m_text: Tempting. But I don't have enough space for both of you.
+  m_text: That thing is barely alive.. it's not healthy. It shouldn't exist!
   m_responses:
-  - m_text: If I stay, Glorpol stays.
-    m_dialogue: {fileID: 11400000, guid: 0a18304f615d1c743b51c31a56c76ed7, type: 2}
-  - m_text: Glorpol belongs here!
-    m_dialogue: {fileID: 11400000, guid: 0a18304f615d1c743b51c31a56c76ed7, type: 2}
+  - m_text: He's organic!
+    m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
+  - m_text: Hey! Glorpal can hear you!
+    m_dialogue: {fileID: 11400000, guid: 1e55cb48aadfd444286f422a2d931ae3, type: 2}
   m_summonsPortal: 0
   m_spawnsEnemies: 0
   m_completesSequence: 0

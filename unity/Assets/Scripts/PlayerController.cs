@@ -212,6 +212,8 @@ public class PlayerController : MonoBehaviour, IHealth
         m_cameraEffects.Shake(Vector2.one * 0.05f, 0.05f);
         if(OnDamaged != null) OnDamaged();
         m_flash.Flash(0.25f);
+
+        AudioManager.Instance.PlayPlayerHitSfx();
     }
 
     private void Die(Vector2 finalKnockback)

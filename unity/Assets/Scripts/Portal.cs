@@ -60,6 +60,8 @@ public class Portal : MonoBehaviour
         float elapsedTime = 0.0f;
         float duration = 0.5f;
 
+        AudioManager.Instance.PlayPortalSpawn();
+
         while(elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -81,6 +83,8 @@ public class Portal : MonoBehaviour
         float elapsedTime = 0.0f;
         float duration = 0.5f;
 
+        //AudioManager.Instance.PlayPortalDespawn();
+
         while(elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
@@ -92,6 +96,8 @@ public class Portal : MonoBehaviour
 
     public IEnumerator Expel(GameObject objectToExpel)
     {
+        AudioManager.Instance.PlayPortalExpelPlayer();
+
         float timeElapsed = 0.0f;
         float duration = 0.65f;
 
@@ -127,6 +133,8 @@ public class Portal : MonoBehaviour
         Vector3 direction = this.transform.position - m_playerController.transform.position;
         float startDistance = direction.magnitude;
         float distance = startDistance;
+
+        AudioManager.Instance.PlayPortalGrabPlayer();
 
         while(distance > 0.15f)
         {

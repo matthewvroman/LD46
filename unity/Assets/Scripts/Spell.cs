@@ -80,6 +80,7 @@ public class Spell : ScriptableObject
                 {
                     damageObject.transform.SetParent(null);
                 }
+                AudioManager.Instance.PlayLightningStrike(); //hack
             }
         }
 

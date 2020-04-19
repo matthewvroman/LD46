@@ -42,6 +42,7 @@ public class Meteor: SpellAssist
             }
             GameObject.FindObjectOfType<CameraEffects>().Shake(new Vector3(0.25f, 0.25f), 0.2f);
             GameObject.Destroy(this.gameObject);
+            AudioManager.Instance.PlayMeteorSfx();
         }
         else
         {

@@ -67,6 +67,8 @@ public class DialoguePanel : MonoBehaviour
                 DialogueBox responseBox = m_responseBoxes[i];
                 responseBox.gameObject.SetActive(false);
             }
+
+            AudioManager.Instance.PlayDialogueSfx();
         }
 
         m_character = character;
@@ -107,6 +109,8 @@ public class DialoguePanel : MonoBehaviour
                 responseBox.Exit(0.0f);
             }
         }
+
+        AudioManager.Instance.PlayButtonSfx();
     }
 
     private void OnClickedResponseAnimationComplete(DialogueResponse response)
