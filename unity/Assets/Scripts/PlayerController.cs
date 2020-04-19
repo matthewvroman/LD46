@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour, IHealth
     [SerializeField] private Spell[] m_spells;
     public Spell[] Spells { get => m_spells; }
     [SerializeField] private ContactFilter2D m_attackContactFilter;
+    [SerializeField] private FlashOnHit m_flash;
 
     private State m_state;
     private int m_attackIndex;
@@ -198,6 +199,9 @@ public class PlayerController : MonoBehaviour, IHealth
 
     public virtual void Damage(float damage, Vector2 knockback, float damageDuration=0.15f)
     {
+        if(m_state == State.Dead) return;
+        if(m_flash.Flashing) return; //invincibility while we're flashing!
+
         m_currentHealth -= damage;
         if(m_currentHealth <= 0 && this.m_state != State.Dead)
         {
@@ -207,6 +211,7 @@ public class PlayerController : MonoBehaviour, IHealth
         }
         m_cameraEffects.Shake(Vector2.one * 0.05f, 0.05f);
         if(OnDamaged != null) OnDamaged();
+        m_flash.Flash(0.25f);
     }
 
     private void Die(Vector2 finalKnockback)

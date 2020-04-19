@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5573124612066261326}
   - component: {fileID: 5573124612066261297}
   - component: {fileID: 3269682707519864046}
+  - component: {fileID: 949909134558679251}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -129,6 +130,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f214c94222a3ce4469aaeda4edb5f157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &949909134558679251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5573124612066261325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e14d6a5469c45004fb9e19c3018ddf3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5573124612540083344
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,8 +250,9 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   m_experience: 5
-  m_attackRange: 1
-  m_timeBetweenAttacks: 1
+  m_flash: {fileID: 949909134558679251}
+  m_attackRange: 2
+  m_timeBetweenAttacks: 1.5
   m_damagePerAttack: 1
   m_eventDispatcher: {fileID: 3269682707519864046}
   m_desiredPositionOffset: {x: 0.3, y: -0.3, z: 0}

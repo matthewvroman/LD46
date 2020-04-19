@@ -57,6 +57,7 @@ public class Mushroom : Enemy
             if(m_retreatTime <= 0)
             {
                 m_state = Enemy.State.Moving;
+                this.GetComponent<Collider2D>().isTrigger = false;
             }
         }
     }
@@ -73,19 +74,8 @@ public class Mushroom : Enemy
         m_animator.SetBool("Attack", true);
         m_state = State.Attacking;
 
-        List<RaycastHit2D> results = new List<RaycastHit2D>();
-        float size = 0.75f;
-        Physics2D.BoxCast(this.transform.position, new Vector2(size,size), 0, transform.right, m_attackContactFilter.NoFilter(), results, size);
-        bool hitEnemy = false;
-        for(int i=0; i<results.Count; i++)
-        {
-            PlayerController enemy = results[i].transform.gameObject.GetComponentInChildren<PlayerController>();
-            if(enemy != null)
-            {
-                enemy.Damage(m_baseDamage, Vector2.right * m_desiredDirection * 2.5f);
-            }
-            
-        }
+        m_rigidbody.AddForce(transform.right * 2.5f * -m_desiredDirection, ForceMode2D.Impulse);   
+        this.GetComponent<Collider2D>().isTrigger = true;
     }
 
     private void OnEventReceived(string data)
@@ -102,7 +92,21 @@ public class Mushroom : Enemy
 
     public void DealDamage()
     {
-        
+        if(m_state != State.Attacking) return;
+
+        List<RaycastHit2D> results = new List<RaycastHit2D>();
+        float size = 0.75f;
+        Physics2D.BoxCast(this.transform.position, new Vector2(size,size), 0, transform.right, m_attackContactFilter.NoFilter(), results, size);
+        bool hitEnemy = false;
+        for(int i=0; i<results.Count; i++)
+        {
+            PlayerController enemy = results[i].transform.gameObject.GetComponentInChildren<PlayerController>();
+            if(enemy != null)
+            {
+                enemy.Damage(m_baseDamage, Vector2.right * m_desiredDirection * 2.5f);
+            }
+            
+        }
     }
 
     public void EndAttack()

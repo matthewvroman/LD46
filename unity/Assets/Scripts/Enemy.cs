@@ -57,6 +57,8 @@ public class Enemy : MonoBehaviour, IHealth
 
     public static Action<Enemy>Killed;
 
+    [SerializeField] private FlashOnHit m_flash;
+
 
     // Start is called before the first frame update
     protected virtual void Awake()
@@ -125,6 +127,8 @@ public class Enemy : MonoBehaviour, IHealth
         {
             Die(knockback);
         }
+
+        m_flash.Flash(damageDuration);
     }
 
     private void Die(Vector2 finalKnockback)
