@@ -39,8 +39,15 @@ public class Spell : ScriptableObject
 
     public virtual void Cast(PlayerController player)
     {
-        RemoveSpellCircles();
-        DamageTargets();
+        if(m_name=="Lightning Strike")
+        {
+            player.StartCoroutine(LightningStrikeCast());
+        }
+        else
+        {
+            RemoveSpellCircles();
+            DamageTargets(player);
+        }
         m_currentCooldown = m_cooldown;
     }
 
@@ -58,7 +65,7 @@ public class Spell : ScriptableObject
         }
     }
 
-    protected void DamageTargets()
+    protected void DamageTargets(PlayerController player)
     {
         foreach(Enemy target in m_targets)
         {
@@ -80,7 +87,6 @@ public class Spell : ScriptableObject
                 {
                     damageObject.transform.SetParent(null);
                 }
-                AudioManager.Instance.PlayLightningStrike(); //hack
             }
         }
 
@@ -88,6 +94,53 @@ public class Spell : ScriptableObject
         {
             GameObject.FindObjectOfType<CameraEffects>().Shake(m_screenShakeMagnitude, m_screenShakeDuration);
         }
+    }
+
+    private IEnumerator LightningStrikeCast()
+    {
+        foreach(Enemy target in m_targets)
+        {
+            if(target==null) continue;
+            if(target.Dead) continue;
+            
+            yield return new WaitForSeconds(0.1f);
+
+            for(int i=0; i<m_spellCircles.Count; i++)
+            {
+                GameObject spellCircle = m_spellCircles[i];
+                Enemy enemy = spellCircle.GetComponentInParent<Enemy>();
+                if(enemy==target)
+                {
+                    m_spellCircles.Remove(spellCircle);
+                    spellCircle.transform.SetParent(null);
+                    SpriteRenderer renderer = spellCircle.GetComponentInChildren<SpriteRenderer>();
+                    FadeAndDestroy fd = spellCircle.AddComponent<FadeAndDestroy>();
+                    fd.Renderer = renderer;
+                    fd.FadeTime = 0.1f;
+                }
+            }
+            
+            GameObject damageObject = GameObject.Instantiate(m_damagePrefab);
+            if(m_damagePrefabParentedToEnemy)
+            {
+                damageObject.transform.SetParent(target.transform);
+                damageObject.transform.localPosition = target.SpellCircleOffset;
+            }
+            
+           target.Damage(m_damage, m_impulse);
+            if(target.Dead)
+            {
+                damageObject.transform.SetParent(null);
+            }
+            AudioManager.Instance.PlayLightningStrike();
+        }
+
+        if(m_screenShakeMagnitude.magnitude > 0 && m_targets.Count>0)
+        {
+            GameObject.FindObjectOfType<CameraEffects>().Shake(m_screenShakeMagnitude, m_screenShakeDuration);
+        }
+
+        RemoveSpellCircles();
     }
 
     private void GetTargets(PlayerController player)
@@ -122,9 +175,11 @@ public class Spell : ScriptableObject
         {
             m_targets.RemoveAt(m_targets.Count-1);
         }
+        int index=0;
         foreach(Enemy target in m_targets)
         {
-            player.StartCoroutine(AddSpellCircle(m_targets.Count*0.1f, target));
+            player.StartCoroutine(AddSpellCircle(index*0.1f, target));
+            index++;
         }
     }
 

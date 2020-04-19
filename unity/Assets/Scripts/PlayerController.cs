@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour, IHealth
             Enemy enemy = results[i].transform.gameObject.GetComponentInChildren<Enemy>();
             if(enemy != null)
             {
-                enemy.Damage(1, Vector2.right * m_desiredDirection * 2.5f);
+                enemy.Damage(1, Vector2.right * m_desiredDirection * 3.0f);
                 hitEnemy = true;
             }
             
