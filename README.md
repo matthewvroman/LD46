@@ -9,4 +9,4 @@ A game built in Unity in under 48 hours for Ludum Dare 46. The theme was "Keep i
 http://matthewvroman.com/dev/ld46/
 
 # Screenshots
-![Screenshot](https://raw.githubusercontent.com/matthewvroman/CuteChute/master/art/readme/screenshot_01.png "Game Screenshot")
+![Screenshot](https://raw.githubusercontent.com/matthewvroman/LD46/master/art/readme/screenshot_01.png "Game Screenshot")
