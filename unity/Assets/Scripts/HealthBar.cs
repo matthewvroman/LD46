@@ -60,6 +60,7 @@ public class HealthBar : MonoBehaviour
                 GameObject gameObject = new GameObject("Heart");
 
                 gameObject.transform.SetParent(this.transform);
+                gameObject.transform.localScale = Vector3.one;
                 Vector3 position = new Vector3(m_heartOffsets*i, 0, 0);
                 if(m_centered)
                 {
